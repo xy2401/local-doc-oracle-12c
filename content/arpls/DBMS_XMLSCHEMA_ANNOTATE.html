@@ -1,0 +1,2478 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xml:lang="en-us" lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="abstract" content="The DBMS_XMLSCHEMA_ANNOTATE package provides an interface to manage and configure the structured storage model, mainly through the use of pre-registration schema annotations.">
+      <meta name="description" content="The DBMS_XMLSCHEMA_ANNOTATE package provides an interface to manage and configure the structured storage model, mainly through the use of pre-registration schema annotations.">
+      <title>DBMS_XMLSCHEMA_ANNOTATE</title>
+      <meta property="og:site_name" content="Oracle Help Center">
+      <meta property="og:title" content="Database PL/SQL Packages and Types Reference">
+      <meta property="og:description" content="The DBMS_XMLSCHEMA_ANNOTATE package provides an interface to manage and configure the structured storage model, mainly through the use of pre-registration schema annotations.">
+      <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+      <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+      <meta name="application-name" content="Database PL/SQL Packages and Types Reference">
+      <meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)">
+      <meta name="plugin" content="SP_docbuilder HTML plugin release 18.2.2">
+      <link rel="alternate" href="database-pl-sql-packages-and-types-reference.pdf" title="PDF File" type="application/pdf">
+      <meta name="robots" content="all">
+      <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+      <meta name="dcterms.created" content="2018-03-15T02:42:46-07:00">
+      <meta name="dcterms.title" content="Database PL/SQL Packages and Types Reference">
+      <meta name="dcterms.dateCopyrighted" content="1996, 2018">
+      <meta name="dcterms.category" content="database">
+      <meta name="dcterms.identifier" content="E85717-03">
+      
+      <meta name="dcterms.product" content="en/database/oracle/oracle-database/12.2">
+      <meta name="dcterms.release" content="Release 12.2">
+      <link rel="prev" href="DBMS_XMLSCHEMA.html" title="Previous" type="text/html">
+      <link rel="next" href="DBMS_XMLSTORAGE_MANAGE.html" title="Next" type="text/html">
+      <script>
+        document.write('<style type="text/css">');
+        document.write('body > .noscript, body > .noscript ~ * { visibility: hidden; }');
+        document.write('</style>');
+     </script>
+      <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"></script>
+      <script>
+            if (window.require === undefined) {
+                document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+            }
+        </script>
+      <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"database","element_name":"Database","display_in_url":true},"suite":{"short_name":"oracle","element_name":"Oracle","display_in_url":true},"product_group":{"short_name":"not-applicable","element_name":"Not applicable","display_in_url":false},"product":{"short_name":"oracle-database","element_name":"Oracle Database","display_in_url":true},"release":{"short_name":"12.2","element_name":"Release 12.2","display_in_url":true}}}</script>
+      
+    <meta name="dcterms.isVersionOf" content="ARPLS">
+  </head>
+   <body>
+      <div class="noscript alert alert-danger text-center" role="alert">
+         <a href="DBMS_XMLSCHEMA.html" class="pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Previous</a>
+         <a href="DBMS_XMLSTORAGE_MANAGE.html" class="pull-right">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+         <span class="fa fa-exclamation-triangle" aria-hidden="true"></span> JavaScript must be enabled to correctly display this content
+        
+      </div>
+      <article>
+         <header>
+            <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+               <li property="itemListElement" typeof="ListItem"><a href="index.html" property="item" typeof="WebPage"><span property="name">Database PL/SQL Packages and Types Reference</span></a></li>
+               <li class="active" property="itemListElement" typeof="ListItem"> DBMS_XMLSCHEMA_ANNOTATE</li>
+            </ol>
+            <a id="GUID-9DDC86A4-3D67-4D2C-99A7-CD68A4140EA2" name="GUID-9DDC86A4-3D67-4D2C-99A7-CD68A4140EA2"></a><a id="ARPLS73580"></a><a id="ARPLS73580"></a>
+            
+            <h2 id="ARPLS-GUID-9DDC86A4-3D67-4D2C-99A7-CD68A4140EA2" class="sect2"><span class="enumeration_chapter">203 </span> DBMS_XMLSCHEMA_ANNOTATE
+            </h2>
+         </header>
+         <div class="ind">
+            <div>
+               <p>The <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE</code> package provides an interface to manage and configure the structured storage model, mainly through the use of pre-registration schema annotations.
+               </p>
+               <p>This chapter contains the following topics:</p>
+               <ul style="list-style-type: disc;">
+                  <li>
+                     <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-00FB6EB7-4665-4B39-9F0B-1E96A108E5A6" title="The DBMS_XMLSCHEMA_ANNOTATE package contains procedures to manage and configure the structured storage model, mainly through the use of pre-registration schema annotations.">Overview</a></p>
+                  </li>
+                  <li>
+                     <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-1AA10EBC-C56E-4FB2-A30E-08C4AD5655DD" title="Owned by XDB, the DBMS_XMLSCHEMA_ANNOTATE package must be created by SYS or XDB. The EXECUTE privilege is granted to PUBLIC. Subprograms in this package are executed using the privileges of the current user.">Security Model</a></p>
+                  </li>
+                  <li>
+                     <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-1F37617A-360E-4C96-B723-6AC164CADFBC" title="This table lists and describes the DBMS_XMLSCHEMA_ANNOTATE package subprograms.">Summary of DBMS_XMLSCHEMA_ANNOTATE Subprograms</a></p>
+                  </li>
+               </ul>
+               <div class="infoboxnotealso" id="GUID-9DDC86A4-3D67-4D2C-99A7-CD68A4140EA2__GUID-CD952407-FD77-4D5B-B8FE-88C2B40D49CA">
+                  <p class="notep1">See Also:</p>
+                  <p><a href="../adxdb/XML-Schema-and-query-object-relational-storage.html#ADXDB6115"><span class="italic">Oracle XML DB Developer's Guide</span></a></p>
+               </div>
+            </div><a id="ARPLS73582"></a><a id="ARPLS73582"></a><div class="props_rev_3"><a id="GUID-00FB6EB7-4665-4B39-9F0B-1E96A108E5A6" name="GUID-00FB6EB7-4665-4B39-9F0B-1E96A108E5A6"></a><h3 id="ARPLS-GUID-00FB6EB7-4665-4B39-9F0B-1E96A108E5A6" class="sect3"><span class="enumeration_section">203.1 </span>DBMS_XMLSCHEMA_ANNOTATE Overview
+               </h3>
+               <div>
+                  <p>The <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE</code> package contains procedures to manage and configure the structured storage model, mainly through the use of pre-registration schema annotations. 
+                  </p>
+                  <div class="section">
+                     <p>Schema annotations influence the way the XML data is stored. For example, the default table annotation assigns a user-provided name to an XML element instead of allowing the database to generate a system name. Consequently, query plans are more readable and it is easier to create constraints on that table.</p>
+                  </div>
+                  <!-- class="section" -->
+               </div>
+            </div><a id="ARPLS73583"></a><a id="ARPLS73583"></a><div class="props_rev_3"><a id="GUID-1AA10EBC-C56E-4FB2-A30E-08C4AD5655DD" name="GUID-1AA10EBC-C56E-4FB2-A30E-08C4AD5655DD"></a><h3 id="ARPLS-GUID-1AA10EBC-C56E-4FB2-A30E-08C4AD5655DD" class="sect3"><span class="enumeration_section">203.2 </span>DBMS_XMLSCHEMA_ANNOTATE Security Model
+               </h3>
+               <div>
+                  <p>Owned by <code class="codeph">XDB</code>, the <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE</code> package must be created by <code class="codeph">SYS</code> or <code class="codeph">XDB</code>. The <code class="codeph">EXECUTE</code> privilege is granted to <code class="codeph">PUBLIC</code>. Subprograms in this package are executed using the privileges of the current user.
+                  </p>
+               </div>
+            </div><a id="ARPLS73584"></a><a id="ARPLS73585"></a><a id="ARPLS73585"></a><a id="ARPLS73584"></a><div class="props_rev_3"><a id="GUID-1F37617A-360E-4C96-B723-6AC164CADFBC" name="GUID-1F37617A-360E-4C96-B723-6AC164CADFBC"></a><h3 id="ARPLS-GUID-1F37617A-360E-4C96-B723-6AC164CADFBC" class="sect3"><span class="enumeration_section">203.3 </span>Summary of DBMS_XMLSCHEMA_ANNOTATE Subprograms
+               </h3>
+               <div>
+                  <p>This table lists and describes the <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE</code> package subprograms. 
+                  </p>
+                  <div class="tblformal" id="GUID-1F37617A-360E-4C96-B723-6AC164CADFBC__GUID-F17C479F-8953-43B8-88ED-45C64B708F17">
+                     <p class="titleintable">Table 203-1 DBMS_XMLSCHEMA_ANNOTATE Package Subprograms</p>
+                     <table cellpadding="4" cellspacing="0" class="Formal" title="DBMS_XMLSCHEMA_ANNOTATE Package Subprograms" summary="This table lists and describes the DBMS_XMLSCHEMA_ANNOTATE package subprograms. " width="100%" frame="hsides" border="1" rules="rows">
+                        <thead>
+                           <tr align="left" valign="top">
+                              <th align="left" valign="bottom" width="37%" id="d1297352e436">Subprogram</th>
+                              <th align="left" valign="bottom" width="63%" id="d1297352e439">Description</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e444" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-557DF6EF-94C2-4F56-8B1C-52C43524A84A" title="This procedure adds the XDB namespace required for XDB annotation.">ADDXDBNAMESPACE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e444 d1297352e439 ">
+                                 <p>Adds the XDB namespace required for XDB annotation</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e457" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-D3EC32DA-6DCA-48DD-8384-EB7D4699AD9C" title="This procedure prevents the creation of a table for the top-level element by adding a default table attribute with an empty value to the element. The first overload applies to a specified top-level element and the second applies to all top-level elements. The procedure always overwrites. This is equivalent to using the schema annotation xdb:defaultTable="" for the top-level element or elements.">DISABLEDEFAULTTABLECREATION Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e457 d1297352e439 ">
+                                 <p>Prevents the creation of a table for the top-level element by adding a default table attribute with an empty value to the element</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e473" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-E3406648-516A-4EAA-8176-002488721253" title="This procedure sets the DOM fidelity attribute to FALSE.">DISABLEMAINTAINDOM Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e473 d1297352e439 ">
+                                 <p>Sets the DOM fidelity attribute to <code class="codeph">FALSE</code></p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e491" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-258BAFA6-4846-4B2F-8A9F-B142D7D5832A" title="This procedure enables the creation of ALL top level tables by removing the empty default table name annotation.">ENABLEDEFAULTTABLECREATION Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e491 d1297352e439 ">
+                                 <p>Enables the creation of <code class="codeph">ALL</code> top level tables by removing the empty default table name annotation
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e507" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-EE365CA5-71D0-41B2-A6EB-6F2FA4B7165B" title="This overloaded procedure sets the DOM fidelity attribute to TRUE.">ENABLEMAINTAINDOM Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e507 d1297352e439 ">
+                                 <p>Sets the DOM fidelity attribute to <code class="codeph">TRUE</code></p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e525" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE" title="This function creates a document containing the differences between the annotated XML schema and the original XML schema.">GETSCHEMAANNOTATIONS Function</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e525 d1297352e439 ">
+                                 <p>Creates a document containing the differences between the annotated XML schema and the original XML schema</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e538" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-DE5D40A4-C18E-440F-9818-FB0BEC22E4FE" title="This function takes a XMLTABLE view definition on a xmltype column or table and it returns a CLOB which can be used as parameter to create a structured xmlindex that backs up the XMLTABLE view as relational table.">GETSIDXDEFFROMVIEW Function</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e538 d1297352e439 ">
+                                 <p>Takes a XMLTABLE view definition on a xmltype column or table and it returns a <code class="codeph">CLOB</code> which can be used as parameter to create a structured xmlindex that backs up the XMLTABLE view as relational table
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e557" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-2B4E4F8E-3ED5-42FC-B594-D64724AE931D" title="This procedure lets a user raise or suppress a warning if an annotation maps to zero nodes in the XML schema.">PRINTWARNINGS Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e557 d1297352e439 ">
+                                 <p>Lets a user raise or suppress a warning if an annotation maps to zero nodes in the XML schema</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e570" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-2078B9F5-7B15-4492-881E-5D9DE954A341" title="This procedure removes the setting of the SQL type from the ANY child of the complex type with the given name.">REMOVEANYSTORAGE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e570 d1297352e439 ">
+                                 <p>Removes the setting of the SQL type from the <code class="codeph">ANY</code> child of the complex type with the given name
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e589" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-F97A0912-19F9-4103-AAB2-7D9306E48BD7" title="This procedure removes any default table attribute given for the element.">REMOVEDEFAULTTABLE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e589 d1297352e439 ">
+                                 <p>Removes any default table attribute given for the element. After calling this procedure, the system generates table names</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e602" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-8ECC1AA7-9DE1-4A72-9ED9-7504486EBD36" title="This procedure removes all annotations used to maintain DOM from the given schema.">REMOVEMAINTAINDOM Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e602 d1297352e439 ">
+                                 <p>Removes all annotations used to maintain DOM from the given schema</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e616" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-070FBFF9-8816-41B3-9D3B-609A3375652A" title="This procedure removes any existing SQLInline attributes to prevent out-of-line storage.">REMOVEOUTOFLINE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e616 d1297352e439 ">
+                                 <p>Removes any existing <code class="codeph">SQLInline</code> attributes to prevent out-of-line storage
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e635" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-9C62442B-9701-4AD3-9ADA-760EBA800996" title="This procedure removes a SQL collection type.">REMOVESQLCOLLTYPE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e635 d1297352e439 ">
+                                 <p>Removes a SQL collection type.</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e648" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-6225D971-AC43-48E5-AFD0-CED7E1DDE5C3" title="This procedure removes a SQLNAME from a global element.">REMOVESQLNAME Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e648 d1297352e439 ">
+                                 <p>Removes a <code class="codeph">SQLNAME</code> from a global element
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e667" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-5D87A83B-3646-4636-998D-8DF131B24A3C" title="This procedure removes a SQL type.">REMOVESQLTYPE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e667 d1297352e439 ">
+                                 <p>Removes a SQL type</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e680" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-C871D77B-728E-448C-9A1B-94B5E90802B2" title="This procedure removes the SQL type mapping for the given schema type.">REMOVESQLTYPEMAPPING Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e680 d1297352e439 ">
+                                 <p>Removes the SQL type mapping for the given schema type.</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e693" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-8CF8E358-6CFC-4EA5-8310-A50A3CEBB401" title="This procedure removes the table storage properties from the CREATE TABLE statement.">REMOVETABLEPROPS Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e693 d1297352e439 ">
+                                 <p>Removes the table storage properties from the <code class="codeph">CREATE</code> <code class="codeph">TABLE</code> statement
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e718" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-7B649388-EF33-4DBA-8E82-D4857B60B150" title="This procedure removes the setting of the TimeStampWithTimeZone datatype from all dateTime typed elements in the XML schema.">REMOVETIMESTAMPWITHTIMEZONE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e718 d1297352e439 ">
+                                 <p>Removes he setting of the <code class="codeph">TimeStampWithTimeZone</code> datatype from all <code class="codeph">dateTime</code> typed elements in the XML schema
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e743" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-532A6BDD-3A70-4C8E-A312-E272AF4AB5CA" title="This procedure assigns a SQL datatype to the ANY child of the complex type with the given name.">SETANYSTORAGE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e743 d1297352e439 ">
+                                 <p>Assigns a SQL datatype to the <code class="codeph">ANY</code> child of the complex type with the given name
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e762" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-896205F2-0D87-48C2-BABC-84FB616AD12F" title="This procedure sets the name of the table for the specified global element. This is equivalent to using the schema annotation xdb:defaultTable="<default_table_name&gt;" for the top-level element.">SETDEFAULTTABLE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e762 d1297352e439 ">
+                                 <p>Sets the name of the table for the specified global element</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e778" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-2AF35E55-2864-465A-94D0-8C52706A65B8" title="This procedure sets the SQLInline attribute to FALSE, that is, it sets xdb:SQLInLine=FALSE.">SETOUTOFLINE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e778 d1297352e439 ">
+                                 <p>Sets the <code class="codeph">SQLInline</code> attribute to <code class="codeph">FALSE</code></p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e805" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C" title="This procedure takes the annotated differences resulting from a call to DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS and patches them into the provided XML schema.">SETSCHEMAANNOTATATIONS Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e805 d1297352e439 ">
+                                 <p>Takes the annotated differences resulting from a call to <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.</code><code class="codeph">GETSCHEMAANNOTATIONS</code> and patches them into the provided XML schema
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e827" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-E51CF45B-6926-4E38-AC39-6AF1B1402F21" title="This procedure assigns a SQL type name for a collection. A collection is a global or local element with maxOccurs&gt;1.">SETSQLCOLLTYPE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e827 d1297352e439 ">
+                                 <p>Assigns a SQL type name for a collection</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e843" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-7D2F40DC-8B56-47A5-A597-6A2360F264BA" title="This procedure assigns a name to the SQL attribute that corresponds to an element defined in the XML schema.">SETSQLNAME Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e843 d1297352e439 ">
+                                 <p>Assigns a name to the SQL attribute that corresponds to an element defined in the XML schema</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e856" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-3876D930-0CF1-4D1B-AAF7-C556404C0254" title="This procedure assigns a SQL type to a global object.">SETSQLTYPE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e856 d1297352e439 ">
+                                 <p>Assigns a SQL type to a global object</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e869" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-3C683E14-5F34-44AF-8072-DE6B000CF11D" title="This procedure defines a mapping of schema type and SQL type.">SETSQLTYPEMAPPING Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e869 d1297352e439 ">
+                                 <p>Defines a mapping of schema type and SQL type</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e882" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-A0C08FAF-8233-40EC-B9CF-1F70D2380B5C" title="This procedure specifies properties in the TABLE storage clause that is appended to the default CREATE TABLE statement.">SETTABLEPROPS Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e882 d1297352e439 ">
+                                 <p>Specifies properties in the <code class="codeph">TABLE</code> storage clause that is appended to the default <code class="codeph">CREATE</code> <code class="codeph">TABLE</code> statement
+                                 </p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" width="37%" id="d1297352e910" headers="d1297352e436 ">
+                                 <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-530450A7-98FB-47F0-9B25-58E2596A8DED" title="This procedure sets the TIMESTAMPWITHTIMEZONE datatype to all dateTime typed elements in the XML schema.">SETTIMESTAMPWITHTIMEZONE Procedure</a> 
+                                 </p>
+                              </td>
+                              <td align="left" valign="top" width="63%" headers="d1297352e910 d1297352e439 ">
+                                 <p>Sets the <code class="codeph">TIMESTAMPWITHTIMEZONE</code> datatype to all <code class="codeph">dateTime</code> typed elements in the XML schema
+                                 </p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <!-- class="inftblhruleinformal" -->
+               </div><a id="ARPLS74349"></a><a id="ARPLS74350"></a><a id="ARPLS74350"></a><a id="ARPLS74349"></a><div class="props_rev_3"><a id="GUID-557DF6EF-94C2-4F56-8B1C-52C43524A84A" name="GUID-557DF6EF-94C2-4F56-8B1C-52C43524A84A"></a><h4 id="ARPLS-GUID-557DF6EF-94C2-4F56-8B1C-52C43524A84A" class="sect4"><span class="enumeration_section">203.3.1 </span>ADDXDBNAMESPACE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure adds the XDB namespace required for XDB annotation. </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.ADDXDBNAMESPACE (
+   xmlschema      IN OUT XMLTYPE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-557DF6EF-94C2-4F56-8B1C-52C43524A84A__GUID-82BAB5A5-D41D-44F3-9DE8-0C3F53E16B77">
+                           <p class="titleintable">Table 203-2 ADDXDBNAMESPACE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="ADDXDBNAMESPACE Procedure Parameters" summary="This table describes the parameters of DBMS_XMLSCHEMA_ANNOTATE.ADDXDBNAMESPACE subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1042">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1045">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1050" headers="d1297352e1042 ">
+                                       <p><code class="codeph">xmschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1050 d1297352e1045 ">
+                                       <p>Gets an XML Schema as <code class="codeph">XMLTYPE</code>, performs the annotation and returns it
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure is called implicitly by any other procedure that adds a schema annotation. Since there is no reason to add an XDB namespace without other annotations, this procedure is most likely called by other annotations procedures and not by the user directly.</p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74351"></a><a id="ARPLS74352"></a><a id="ARPLS74352"></a><a id="ARPLS74351"></a><div class="props_rev_3"><a id="GUID-D3EC32DA-6DCA-48DD-8384-EB7D4699AD9C" name="GUID-D3EC32DA-6DCA-48DD-8384-EB7D4699AD9C"></a><h4 id="ARPLS-GUID-D3EC32DA-6DCA-48DD-8384-EB7D4699AD9C" class="sect4"><span class="enumeration_section">203.3.2 </span>DISABLEDEFAULTTABLECREATION Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure prevents the creation of a table for the top-level element by adding a default table attribute with an empty value to the element. The first overload applies to a specified top-level element and the second applies to all top-level elements. The procedure always overwrites. This is equivalent to using the schema annotation <code class="codeph">xdb:defaultTable=""</code> for the top-level element or elements.
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.DISABLEDEFAULTTABLECREATION (
+   xmlschema         IN OUT XMLType,  
+   globalElementName IN VARCHAR2);</pre><p></p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.DISABLEDEFAULTTABLECREATION (
+   xmlschema         IN OUT XMLType);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-D3EC32DA-6DCA-48DD-8384-EB7D4699AD9C__GUID-36E9345E-9CBB-40C7-9292-90B71410B240">
+                           <p class="titleintable">Table 203-3 DISABLEDEFAULTTABLECREATION Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="DISABLEDEFAULTTABLECREATION Procedure Parameters" summary="This table describes the parameters of DISABLEDEFAULTTABLECREATION." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1180">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1183">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1188" headers="d1297352e1180 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1188 d1297352e1183 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1196" headers="d1297352e1180 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1196 d1297352e1183 ">
+                                       <p>Name of the global element in the schema</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">purchaseOrder</code> element will have an annotation similar to <code class="codeph">xdb:defaultTable=""</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">DECLARE
+   xml_schema   XMLTYPE;
+BEGIN
+   SELECT out INTO xml_schema FROM annotation_tab;
+   DBMS_XMLSCHEMA_ANNOTATE.DISABLEDEFAULTTABLECREATION(xml_schema,
+                                            'purchaseOrder');
+   UPDATE annotation_tab SET out = xml_schema;
+END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74472"></a><a id="ARPLS74473"></a><a id="ARPLS74473"></a><a id="ARPLS74472"></a><div class="props_rev_3"><a id="GUID-E3406648-516A-4EAA-8176-002488721253" name="GUID-E3406648-516A-4EAA-8176-002488721253"></a><h4 id="ARPLS-GUID-E3406648-516A-4EAA-8176-002488721253" class="sect4"><span class="enumeration_section">203.3.3 </span>DISABLEMAINTAINDOM Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure sets the DOM fidelity attribute to <code class="codeph">FALSE</code>.
+                     </p>
+                     <div class="section">
+                        <p>There are two overloads. The first sets DOM fidelity attribute to <code class="codeph">FALSE</code> for all complex types, and the second sets it to <code class="codeph">FALSE</code> for the named complex type. This is equivalent to adding <code class="codeph">xdb:maintainDOM="false"</code> on all or specified complex types respectively.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.DISABLEMAINTAINDOM (
+   xmlschema       IN OUT XMLType, 
+   overwrite       IN BOOLEAN default TRUE);</pre><p></p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.DISABLEMAINTAINDOM (
+   xmlschema       IN OUT XMLType, 
+   complexTypeName IN VARCHAR2,  
+   overwrite       IN BOOLEAN default TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-E3406648-516A-4EAA-8176-002488721253__GUID-9927CEA3-26B6-4962-823C-2318ADADA8D3">
+                           <p class="titleintable">Table 203-4 DISABLEMAINTAINDOM Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="DISABLEMAINTAINDOM Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.DISABLEMAINTAINDOM." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1342">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1345">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1350" headers="d1297352e1342 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1350 d1297352e1345 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1358" headers="d1297352e1342 ">
+                                       <p><code class="codeph">complexTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1358 d1297352e1345 ">
+                                       <p>The name of the complex type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1366" headers="d1297352e1342 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1366 d1297352e1345 ">
+                                       <p>A boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code></p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74353"></a><a id="ARPLS74354"></a><a id="ARPLS74354"></a><a id="ARPLS74353"></a><div class="props_rev_3"><a id="GUID-258BAFA6-4846-4B2F-8A9F-B142D7D5832A" name="GUID-258BAFA6-4846-4B2F-8A9F-B142D7D5832A"></a><h4 id="ARPLS-GUID-258BAFA6-4846-4B2F-8A9F-B142D7D5832A" class="sect4"><span class="enumeration_section">203.3.4 </span>ENABLEDEFAULTTABLECREATION Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure enables the creation of ALL top level tables by removing the empty default table name annotation.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.ENABLEDEFAULTTABLECREATION (
+   xmlschema            IN OUT  XMLTYPE);
+
+DBMS_XMLSCHEMA_ANNOTATE.ENABLEDEFAULTTABLECREATION (
+   xmlschema            IN OUT  XMLTYPE,
+   globalElementName    IN      VARCHAR2););</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-258BAFA6-4846-4B2F-8A9F-B142D7D5832A__GUID-9BD56EAE-7119-4932-942D-06EBD29B5467">
+                           <p class="titleintable">Table 203-5 ENABLEDEFAULTTABLECREATION Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="ENABLEDEFAULTTABLECREATION Procedure Parameters" summary="This table describes the parameters of ENABLEDEFAULTTABLECREATION." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1483">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1486">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1491" headers="d1297352e1483 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1491 d1297352e1486 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1499" headers="d1297352e1483 ">
+                                       <p><code class="codeph">gloablElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1499 d1297352e1486 ">
+                                       <p>Name of the global element in the schema</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure does not affect elements that have a default table name.</p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74474"></a><a id="ARPLS74475"></a><a id="ARPLS74475"></a><a id="ARPLS74474"></a><div class="props_rev_3"><a id="GUID-EE365CA5-71D0-41B2-A6EB-6F2FA4B7165B" name="GUID-EE365CA5-71D0-41B2-A6EB-6F2FA4B7165B"></a><h4 id="ARPLS-GUID-EE365CA5-71D0-41B2-A6EB-6F2FA4B7165B" class="sect4"><span class="enumeration_section">203.3.5 </span>ENABLEMAINTAINDOM Procedure
+                  </h4>
+                  <div>
+                     <p>This overloaded procedure sets the DOM fidelity attribute to <code class="codeph">TRUE</code>.
+                     </p>
+                     <div class="section">
+                        <p>There are two overloads. The first sets DOM fidelity attribute to <code class="codeph">TRUE</code> for all complex types, and the second sets it to TRUE for the named complex type. 
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.ENABLEMAINTAINDOM (
+   xmlschema       IN OUT XMLType, 
+   overwrite       IN BOOLEAN default TRUE);</pre><p></p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.ENABLEMAINTAINDOM (
+   xmlschema        IN OUT XMLType, 
+   complexTypeName  IN VARCHAR2,  
+   overwrite        IN BOOLEAN default TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-EE365CA5-71D0-41B2-A6EB-6F2FA4B7165B__GUID-0B505130-99AA-4BFC-A9E9-0C4F5296B9AA">
+                           <p class="titleintable">Table 203-6 ENABLEMAINTAINDOM Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="ENABLEMAINTAINDOM Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.ENABLEMAINTAINDOM." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1632">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1635">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1640" headers="d1297352e1632 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1640 d1297352e1635 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1648" headers="d1297352e1632 ">
+                                       <p><code class="codeph">complexTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1648 d1297352e1635 ">
+                                       <p>The name of the complex type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1656" headers="d1297352e1632 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1656 d1297352e1635 ">
+                                       <p>A boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code></p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74476"></a><a id="ARPLS74477"></a><a id="ARPLS74477"></a><a id="ARPLS74476"></a><div class="props_rev_3"><a id="GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE" name="GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE"></a><h4 id="ARPLS-GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE" class="sect4"><span class="enumeration_section">203.3.6 </span>GETSCHEMAANNOTATIONS Function
+                  </h4>
+                  <div>
+                     <p>This function creates a document containing the differences between the annotated XML schema and the original XML schema. </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS (
+   xmlschema IN xmlType) 
+  RETURN XMLType;</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE__GUID-325B2613-54DC-4141-B5B3-9D694DEA6675">
+                           <p class="titleintable">Table 203-7 GETSCHEMAANNOTATIONS Function Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="GETSCHEMAANNOTATIONS Function Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1773">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1776">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1781" headers="d1297352e1773 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1781 d1297352e1776 ">
+                                       <p>The original XML schema</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Values</p>
+                        <p>This function returns the document <code class="codeph">annotations.xml</code> as an <code class="codeph">XMLType</code>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This function saves all annotations in one document, named <code class="codeph">annotations</code>, and returns it. With this document, you can apply all annotations to a non-annotated schema, using <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.</code><code class="codeph">GETSCHEMAANNOTATIONS</code>.
+                        </p>
+                        <p><code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS</code> is not available on Oracle Database release 10.2 (only Oracle Database release 11.<span class="italic">x</span>).
+                        </p>
+                        <div class="infoboxnotealso" id="GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE__GUID-A0E9241E-B8D8-4255-8860-3E76017A888A">
+                           <p class="notep1">See Also:</p>
+                           <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C" title="This procedure takes the annotated differences resulting from a call to DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS and patches them into the provided XML schema.">SETSCHEMAANNOTATATIONS Procedure</a></p>
+                        </div>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>For an example of <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.</code><code class="codeph">GETSCHEMAANNOTATIONS</code>, see the example in <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C" title="This procedure takes the annotated differences resulting from a call to DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS and patches them into the provided XML schema.">SETSCHEMAANNOTATATIONS Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74791"></a><a id="ARPLS74792"></a><a id="ARPLS74792"></a><a id="ARPLS74791"></a><div class="props_rev_3"><a id="GUID-DE5D40A4-C18E-440F-9818-FB0BEC22E4FE" name="GUID-DE5D40A4-C18E-440F-9818-FB0BEC22E4FE"></a><h4 id="ARPLS-GUID-DE5D40A4-C18E-440F-9818-FB0BEC22E4FE" class="sect4"><span class="enumeration_section">203.3.7 </span>GETSIDXDEFFROMVIEW Function
+                  </h4>
+                  <div>
+                     <p>This function takes a XMLTABLE view definition on a xmltype column or table and it returns a <code class="codeph">CLOB</code> which can be used as parameter to create a structured xmlindex that backs up the XMLTABLE view as relational table. 
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.GETSIDXDEFFROMVIEW (
+   viewName   IN xmlType) 
+  RETURN CLOB;</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-DE5D40A4-C18E-440F-9818-FB0BEC22E4FE__GUID-ADFF746F-1BB1-4E09-BFAE-D64913484799">
+                           <p class="titleintable">Table 203-8 GETSIDXDEFFROMVIEW Function Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="GETSIDXDEFFROMVIEW Function Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.GETSIDXDEFFROMVIEW." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e1961">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e1964">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e1969" headers="d1297352e1961 ">
+                                       <p><code class="codeph">viewName </code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e1969 d1297352e1964 ">
+                                       <p>The original XML schema</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Values</p>
+                        <p>This function returns a <code class="codeph">CLOB</code> which can be used as parameter to create a structured xmlindex that backs up the <code class="codeph">XMLTABLE</code> view as relational table.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74355"></a><a id="ARPLS74356"></a><a id="ARPLS74356"></a><a id="ARPLS74355"></a><div class="props_rev_3"><a id="GUID-2B4E4F8E-3ED5-42FC-B594-D64724AE931D" name="GUID-2B4E4F8E-3ED5-42FC-B594-D64724AE931D"></a><h4 id="ARPLS-GUID-2B4E4F8E-3ED5-42FC-B594-D64724AE931D" class="sect4"><span class="enumeration_section">203.3.8 </span>PRINTWARNINGS Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure lets a user raise or suppress a warning if an annotation maps to zero nodes in the XML schema.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.PRINTWARNINGS (
+   value       IN   BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-2B4E4F8E-3ED5-42FC-B594-D64724AE931D__GUID-901EB7D9-6442-42F2-B8DD-631277B62DC0">
+                           <p class="titleintable">Table 203-9 PRINTWARNINGS Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="PRINTWARNINGS Procedure Parameters" summary="This table describes the parameters of DBMS_XMLSCHEMA_ANNOTATE.PRINTWARNINGS subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e2096">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e2099">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2104" headers="d1297352e2096 ">
+                                       <p><code class="codeph">val</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2104 d1297352e2099 ">
+                                       <p>For the <code class="codeph">NO MATCHING ELEMENTS FOUND </code>error message to be raised <code class="codeph">val</code> must be set to <code class="codeph">TRUE</code>. In cases in which user wishes to suppress this warning, set to <code class="codeph">FALSE</code>.
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>If an annotation maps to more than one node in the XML schema, this raise the error <code class="codeph">ANNOTATION MAPS TO MULTIPLE ELEMENTS</code>. In this case no annotation is performed, and the user must correct the parameters to the procedure call to refer to a unique node in the XML schema.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74357"></a><a id="ARPLS74358"></a><a id="ARPLS74358"></a><a id="ARPLS74357"></a><div class="props_rev_3"><a id="GUID-2078B9F5-7B15-4492-881E-5D9DE954A341" name="GUID-2078B9F5-7B15-4492-881E-5D9DE954A341"></a><h4 id="ARPLS-GUID-2078B9F5-7B15-4492-881E-5D9DE954A341" class="sect4"><span class="enumeration_section">203.3.9 </span>REMOVEANYSTORAGE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes the setting of the SQL type from the <code class="codeph">ANY</code> child of the complex type with the given name.
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVEANYSTORAGE (
+   xmlschema       IN OUT XMLType, 
+   complexTypeName IN VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-2078B9F5-7B15-4492-881E-5D9DE954A341__GUID-769EE155-ED71-45E3-8C28-0F74673E282B">
+                           <p class="titleintable">Table 203-10 REMOVEANYSTORAGE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVEANYSTORAGE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.REMOVEANYSTORAGE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e2242">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e2245">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2250" headers="d1297352e2242 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2250 d1297352e2245 ">
+                                       <p>The XML schema to be annotated.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2258" headers="d1297352e2242 ">
+                                       <p><code class="codeph">complexTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2258 d1297352e2245 ">
+                                       <p>The name of the complex type.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses the <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-532A6BDD-3A70-4C8E-A312-E272AF4AB5CA" title="This procedure assigns a SQL datatype to the ANY child of the complex type with the given name.">SETANYSTORAGE Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74359"></a><a id="ARPLS74360"></a><a id="ARPLS74360"></a><a id="ARPLS74359"></a><div class="props_rev_3"><a id="GUID-F97A0912-19F9-4103-AAB2-7D9306E48BD7" name="GUID-F97A0912-19F9-4103-AAB2-7D9306E48BD7"></a><h4 id="ARPLS-GUID-F97A0912-19F9-4103-AAB2-7D9306E48BD7" class="sect4"><span class="enumeration_section">203.3.10 </span>REMOVEDEFAULTTABLE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes any default table attribute given for the element. </p>
+                     <div class="section">
+                        <p>After calling this procedure, the system generates table names. This procedure always overwrites.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVEDEFAULTTABLE (
+   xmlschema          IN OUT XMLTYPE, 
+   globalElementName  IN     VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-F97A0912-19F9-4103-AAB2-7D9306E48BD7__GUID-EB1BD3C3-0623-422B-B9F5-58BF8B00F3A2">
+                           <p class="titleintable">Table 203-11 REMOVEDEFAULTTABLE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVEDEFAULTTABLE Procedure Parameters" summary="This table describes the parameters of DBMS_XMLSCHEMA_ANNOTATE.RESETDEFAULTTABLE subprogram.s." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e2391">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e2394">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2399" headers="d1297352e2391 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2399 d1297352e2394 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2407" headers="d1297352e2391 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2407 d1297352e2394 ">
+                                       <p>Name of the global element in the schema</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>Annotations can be verified anytime using <code class="codeph">"select out from annotation_tab"</code>.
+                        </p><pre class="oac_no_warn" dir="ltr">
+ 
+--The purchaseOrder element will have no annotation for defaultTable.
+DECLARE
+   xml_schema XMLTYPE;
+BEGIN
+   SELECT out INTO xml_schema FROM annotation_tab;
+   DBMS_XMLSCHEMA_ANNOTATE.REMOVEDEFAULTTABLE(xml_schema,
+                                            'purchaseOrder');
+   UPDATE annotation_tab SET out = xml_schema;
+END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74478"></a><a id="ARPLS74479"></a><a id="ARPLS74479"></a><a id="ARPLS74478"></a><div class="props_rev_3"><a id="GUID-8ECC1AA7-9DE1-4A72-9ED9-7504486EBD36" name="GUID-8ECC1AA7-9DE1-4A72-9ED9-7504486EBD36"></a><h4 id="ARPLS-GUID-8ECC1AA7-9DE1-4A72-9ED9-7504486EBD36" class="sect4"><span class="enumeration_section">203.3.11 </span>REMOVEMAINTAINDOM Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes all annotations used to maintain DOM from the given schema.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVEMAINTAINDOM (
+   xmlschema    IN OUT XMLType);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-8ECC1AA7-9DE1-4A72-9ED9-7504486EBD36__GUID-D4105E80-6CF4-49A9-81F6-B00AE7A8A59C">
+                           <p class="titleintable">Table 203-12 REMOVEMAINTAINDOM Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVEMAINTAINDOM Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.REMOVEMAINTAINDOM." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e2533">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e2536">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2541" headers="d1297352e2533 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2541 d1297352e2536 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74480"></a><a id="ARPLS74481"></a><a id="ARPLS74481"></a><a id="ARPLS74480"></a><div class="props_rev_3"><a id="GUID-070FBFF9-8816-41B3-9D3B-609A3375652A" name="GUID-070FBFF9-8816-41B3-9D3B-609A3375652A"></a><h4 id="ARPLS-GUID-070FBFF9-8816-41B3-9D3B-609A3375652A" class="sect4"><span class="enumeration_section">203.3.12 </span>REMOVEOUTOFLINE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes any existing <code class="codeph">SQLInline</code> attributes to prevent out-of-line storage.
+                     </p>
+                     <div class="section">
+                        <p>There are three overloads.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p>
+                        <p>Removes the <code class="codeph">SQLInline</code> attribute for the named element.
+                        </p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVEOUTOFLINE (
+   xmlschema           IN OUT  XMLType, 
+   elementName         IN      VARCHAR2, 
+   elementType         IN      VARCHAR2, 
+   overwrite           IN      BOOLEAN default TRUE);
+</pre><p>Removes the <code class="codeph">SQLInline</code> attribute for the object specified by its global object and local element names.
+                        </p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVEOUTOFLINE (
+   xmlschema          IN OUT  XMLType, 
+   globalObject       IN      VARCHAR2, 
+   globalObjectName   IN      VARCHAR2, 
+   localElementName   IN      VARCHAR2);
+</pre><p>Removes the <code class="codeph">SQLInline</code> attribute for the referenced global element.
+                        </p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVEOUTOFLINE (
+   xmlschema         IN OUT  XMLType,
+   reference         IN      VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-070FBFF9-8816-41B3-9D3B-609A3375652A__GUID-1A226727-DB34-4A08-A53A-CBBA408A331A">
+                           <p class="titleintable">Table 203-13 REMOVEOUTOFLINE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVEOUTOFLINE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.REMOVEOUTOFLINE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e2681">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e2684">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2689" headers="d1297352e2681 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2689 d1297352e2684 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2697" headers="d1297352e2681 ">
+                                       <p><code class="codeph">elementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2697 d1297352e2684 ">
+                                       <p>The element name</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2705" headers="d1297352e2681 ">
+                                       <p><code class="codeph">elementType</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2705 d1297352e2684 ">
+                                       <p>The element type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2713" headers="d1297352e2681 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2713 d1297352e2684 ">
+                                       <p>The global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2721" headers="d1297352e2681 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2721 d1297352e2684 ">
+                                       <p>The name of the global object </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2729" headers="d1297352e2681 ">
+                                       <p><code class="codeph">localElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2729 d1297352e2684 ">
+                                       <p>The name of a local element that descends from the global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2737" headers="d1297352e2681 ">
+                                       <p><code class="codeph">reference</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2737 d1297352e2684 ">
+                                       <p>A reference to a global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2745" headers="d1297352e2681 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2745 d1297352e2684 ">
+                                       <p>A boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>.
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-2AF35E55-2864-465A-94D0-8C52706A65B8" title="This procedure sets the SQLInline attribute to FALSE, that is, it sets xdb:SQLInLine=FALSE.">SETOUTOFLINE Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74361"></a><a id="ARPLS74362"></a><a id="ARPLS74362"></a><a id="ARPLS74361"></a><div class="props_rev_3"><a id="GUID-9C62442B-9701-4AD3-9ADA-760EBA800996" name="GUID-9C62442B-9701-4AD3-9ADA-760EBA800996"></a><h4 id="ARPLS-GUID-9C62442B-9701-4AD3-9ADA-760EBA800996" class="sect4"><span class="enumeration_section">203.3.13 </span>REMOVESQLCOLLTYPE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes a SQL collection type.</p>
+                     <div class="section">
+                        <p>The first overload removes the SQL collection type corresponding to the named element and the second overload removes the type from the XML element inside the complex type.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVESQLCOLLTYPE (
+   xmlschema   IN OUT XMLType, 
+   elementName IN VARCHAR2);</pre><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVESQLCOLLTYPE (
+   xmlschema        IN OUT XMLType, 
+   globalObject     IN VARCHAR2, 
+   globalName       IN VARCHAR2, 
+   localElementName IN VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-9C62442B-9701-4AD3-9ADA-760EBA800996__GUID-973D1DAA-B1B9-4BFA-969F-119770053D00">
+                           <p class="titleintable">Table 203-14 REMOVESQLCOLLTYPE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVESQLCOLLTYPE Procedure Parameters" summary="This table describes the parameters of REMOVESQLCOLLTYPE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e2889">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e2892">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2897" headers="d1297352e2889 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2897 d1297352e2892 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2905" headers="d1297352e2889 ">
+                                       <p><code class="codeph">elementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2905 d1297352e2892 ">
+                                       <p>The element name</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2913" headers="d1297352e2889 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2913 d1297352e2892 ">
+                                       <p>The global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2921" headers="d1297352e2889 ">
+                                       <p><code class="codeph">globalName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2921 d1297352e2892 ">
+                                       <p>The name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e2929" headers="d1297352e2889 ">
+                                       <p><code class="codeph">localElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e2929 d1297352e2892 ">
+                                       <p>The name of a local element that descends from the global element</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses the <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-E51CF45B-6926-4E38-AC39-6AF1B1402F21" title="This procedure assigns a SQL type name for a collection. A collection is a global or local element with maxOccurs&gt;1.">SETSQLCOLLTYPE Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74363"></a><a id="ARPLS74364"></a><a id="ARPLS74364"></a><a id="ARPLS74363"></a><div class="props_rev_3"><a id="GUID-6225D971-AC43-48E5-AFD0-CED7E1DDE5C3" name="GUID-6225D971-AC43-48E5-AFD0-CED7E1DDE5C3"></a><h4 id="ARPLS-GUID-6225D971-AC43-48E5-AFD0-CED7E1DDE5C3" class="sect4"><span class="enumeration_section">203.3.14 </span>REMOVESQLNAME Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes a <code class="codeph">SQLNAME</code> from a global element.
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVESQLNAME (
+   xmlschema          IN OUT  XMLType,
+   globalObject       IN      VARCHAR2, 
+   globalObjectName   IN      VARCHAR2,
+   localObject        IN      VARCHAR2, 
+   localObjectName    IN      VARCHAR2, 
+   sqlName            IN      VARCHAR2, 
+   overwrite          IN      BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-6225D971-AC43-48E5-AFD0-CED7E1DDE5C3__GUID-A41C5CAC-96D2-4196-9014-6E52F8AFB4BB">
+                           <p class="titleintable">Table 203-15 REMOVESQLNAME Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVESQLNAME Procedure Parameters" summary="This table describes the parameters of REMOVESQLNAME procedure.." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e3063">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e3066">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3071" headers="d1297352e3063 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3071 d1297352e3066 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3079" headers="d1297352e3063 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3079 d1297352e3066 ">
+                                       <p>Global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3087" headers="d1297352e3063 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3087 d1297352e3066 ">
+                                       <p>Name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3095" headers="d1297352e3063 ">
+                                       <p><code class="codeph">localObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3095 d1297352e3066 ">
+                                       <p>Object descended from the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3103" headers="d1297352e3063 ">
+                                       <p><code class="codeph">localObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3103 d1297352e3066 ">
+                                       <p>Name of the local object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3111" headers="d1297352e3063 ">
+                                       <p><code class="codeph">sqlName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3111 d1297352e3066 ">
+                                       <p>Name of the SQL attribute that corresponds to the element defined in the XML schema</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3119" headers="d1297352e3063 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3119 d1297352e3066 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">shipTo</code> element will have an annotation similar to <code class="codeph">xdb:SQLName="SHIPTO_SQLNAME"</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">DECLARE
+   xml_schema   XMLTYPE;
+BEGIN
+   SELECT out INTO xml_schema FROM annotation_tab;
+   DBMS_XMLSCHEMA_ANNOTATE.SETSQLNAME (xml_schema, 
+                                        'element', 'purchaseOrder', 
+                                        'element', 'shipTo',
+                                        'SHIPTO_SQLNAME');   
+   UPDATE annotation_tab SET out = xml_schema;
+END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74365"></a><a id="ARPLS74366"></a><a id="ARPLS74366"></a><a id="ARPLS74365"></a><div class="props_rev_3"><a id="GUID-5D87A83B-3646-4636-998D-8DF131B24A3C" name="GUID-5D87A83B-3646-4636-998D-8DF131B24A3C"></a><h4 id="ARPLS-GUID-5D87A83B-3646-4636-998D-8DF131B24A3C" class="sect4"><span class="enumeration_section">203.3.15 </span>REMOVESQLTYPE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes a SQL type. </p>
+                     <div class="section">
+                        <p>The first overload removes a SQL type from a global element and the second overload removes the type from a global element inside the complex type.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVESQLTYPE (
+   xmlschema in out XMLType,  
+   globalElementName   IN      VARCHAR2);</pre><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVESQLTYPE (
+   xmlschema           IN OUT  XMLTYPE, 
+   globalObject        IN      VARCHAR2, 
+   globalObjectName    IN      VARCHAR2, 
+   localObject         IN      VARCHAR2, 
+   localObjectName     IN      VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-5D87A83B-3646-4636-998D-8DF131B24A3C__GUID-99FEE0CF-8BE6-419B-A08A-337373856975">
+                           <p class="titleintable">Table 203-16 REMOVESQLTYPE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVESQLTYPE Procedure Parameters" summary="This table describes the parameters of REMOVESQLTYPE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e3255">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e3258">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3263" headers="d1297352e3255 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3263 d1297352e3258 ">
+                                       <p>XML schema to be annotated.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3271" headers="d1297352e3255 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3271 d1297352e3258 ">
+                                       <p>Global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3279" headers="d1297352e3255 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3279 d1297352e3258 ">
+                                       <p>Name of the global element.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3287" headers="d1297352e3255 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3287 d1297352e3258 ">
+                                       <p>Name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3295" headers="d1297352e3255 ">
+                                       <p><code class="codeph">localObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3295 d1297352e3258 ">
+                                       <p>Object descended from the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3303" headers="d1297352e3255 ">
+                                       <p><code class="codeph">localObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3303 d1297352e3258 ">
+                                       <p>Name of the local object</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses the <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-3876D930-0CF1-4D1B-AAF7-C556404C0254" title="This procedure assigns a SQL type to a global object.">SETSQLTYPE Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74367"></a><a id="ARPLS74368"></a><a id="ARPLS74368"></a><a id="ARPLS74367"></a><div class="props_rev_3"><a id="GUID-C871D77B-728E-448C-9A1B-94B5E90802B2" name="GUID-C871D77B-728E-448C-9A1B-94B5E90802B2"></a><h4 id="ARPLS-GUID-C871D77B-728E-448C-9A1B-94B5E90802B2" class="sect4"><span class="enumeration_section">203.3.16 </span>REMOVESQLTYPEMAPPING Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes the SQL type mapping for the given schema type. </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVESQLTYPEMAPPING (
+   xmlschema        IN OUT  XMLTYPE,
+   schemaTypeName   IN      VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-C871D77B-728E-448C-9A1B-94B5E90802B2__GUID-BE93D8EF-08BD-4761-9EB2-4E352B225290">
+                           <p class="titleintable">Table 203-17 REMOVESQLTYPEMAPPING Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVESQLTYPEMAPPING Procedure Parameters" summary="This table describes the parameters of REMOVESQLTYPEMAPPING" width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e3430">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e3433">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3438" headers="d1297352e3430 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3438 d1297352e3433 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3446" headers="d1297352e3430 ">
+                                       <p><code class="codeph">schemaTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3446 d1297352e3433 ">
+                                       <p>Name of the schema type</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses the <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-3C683E14-5F34-44AF-8072-DE6B000CF11D" title="This procedure defines a mapping of schema type and SQL type.">SETSQLTYPEMAPPING Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74369"></a><a id="ARPLS74370"></a><a id="ARPLS74370"></a><a id="ARPLS74369"></a><div class="props_rev_3"><a id="GUID-8CF8E358-6CFC-4EA5-8310-A50A3CEBB401" name="GUID-8CF8E358-6CFC-4EA5-8310-A50A3CEBB401"></a><h4 id="ARPLS-GUID-8CF8E358-6CFC-4EA5-8310-A50A3CEBB401" class="sect4"><span class="enumeration_section">203.3.17 </span>REMOVETABLEPROPS Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes the table storage properties from the <code class="codeph">CREATE</code> <code class="codeph">TABLE</code> statement.
+                     </p>
+                     <div class="section">
+                        <p>This procedure is overloaded. Each overload has different parameter requirements as indicated. </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVETABLEPROPS (
+   xmlschema            IN OUT  XMLTYPE,
+   globalElementName    IN      VARCHAR2);</pre><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVETABLEPROPS (
+   xmlschema            IN OUT  XMLTYPE, 
+   globalObject         IN      VARCHAR2, 
+   globalObjectName     IN      VARCHAR2, 
+   localElementName     IN      VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-8CF8E358-6CFC-4EA5-8310-A50A3CEBB401__GUID-3623BB1C-97A1-43C0-9FB6-85CD9C3CA6CA">
+                           <p class="titleintable">Table 203-18 REMOVETABLEPROPS Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVETABLEPROPS Procedure Parameters" summary="This table describes the parameters of REMOVETABLEPROPS" width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e3585">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e3588">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3593" headers="d1297352e3585 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3593 d1297352e3588 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3601" headers="d1297352e3585 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3601 d1297352e3588 ">
+                                       <p>Name of the global element in the schema</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3609" headers="d1297352e3585 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3609 d1297352e3588 ">
+                                       <p>Global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3617" headers="d1297352e3585 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3617 d1297352e3588 ">
+                                       <p>Name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3625" headers="d1297352e3585 ">
+                                       <p><code class="codeph">localElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3625 d1297352e3588 ">
+                                       <p>Name of a local element that descends from the global element</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses the <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-A0C08FAF-8233-40EC-B9CF-1F70D2380B5C" title="This procedure specifies properties in the TABLE storage clause that is appended to the default CREATE TABLE statement.">SETTABLEPROPS Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74371"></a><a id="ARPLS74372"></a><a id="ARPLS74372"></a><a id="ARPLS74371"></a><div class="props_rev_3"><a id="GUID-7B649388-EF33-4DBA-8E82-D4857B60B150" name="GUID-7B649388-EF33-4DBA-8E82-D4857B60B150"></a><h4 id="ARPLS-GUID-7B649388-EF33-4DBA-8E82-D4857B60B150" class="sect4"><span class="enumeration_section">203.3.18 </span>REMOVETIMESTAMPWITHTIMEZONE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes the setting of the <code class="codeph">TimeStampWithTimeZone</code> datatype from all <code class="codeph">dateTime</code> typed elements in the XML schema.
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.REMOVETIMESTAMPWITHTIMEZONE (
+   xmlschema          IN OUT  XMLTYPE);
+
+DBMS_XMLSCHEMA_ANNOTATE.REMOVETIMESTAMPWITHTIMEZONE (
+   xmlschema         IN OUT  XMLTYPE,
+   schemaTypeName    IN      VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-7B649388-EF33-4DBA-8E82-D4857B60B150__GUID-5E674103-4CAA-4E68-8C84-D5E1FC5246EE">
+                           <p class="titleintable">Table 203-19 REMOVETIMESTAMPWITHTIMEZONE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REMOVETIMESTAMPWITHTIMEZONE Procedure Parameters" summary="This table describes the parameters of REMOVETIMESTAMPWITHTIMEZONE Procedure Parameters." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e3764">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e3767">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3772" headers="d1297352e3764 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3772 d1297352e3767 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3780" headers="d1297352e3764 ">
+                                       <p><code class="codeph">schemaTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3780 d1297352e3767 ">
+                                       <p>Name of the schema type</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>This procedure reverses the <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-530450A7-98FB-47F0-9B25-58E2596A8DED" title="This procedure sets the TIMESTAMPWITHTIMEZONE datatype to all dateTime typed elements in the XML schema.">SETTIMESTAMPWITHTIMEZONE Procedure</a>.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74373"></a><a id="ARPLS74374"></a><a id="ARPLS74374"></a><a id="ARPLS74373"></a><div class="props_rev_3"><a id="GUID-532A6BDD-3A70-4C8E-A312-E272AF4AB5CA" name="GUID-532A6BDD-3A70-4C8E-A312-E272AF4AB5CA"></a><h4 id="ARPLS-GUID-532A6BDD-3A70-4C8E-A312-E272AF4AB5CA" class="sect4"><span class="enumeration_section">203.3.19 </span>SETANYSTORAGE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure assigns a SQL datatype to the <code class="codeph">ANY</code> child of the complex type with the given name. 
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETANYSTORAGE )
+   xmlschema       IN OUT  XMLType,
+   complexTypeName IN      VARCHAR2,
+   sqlTypeName     IN      VARCHAR2, 
+   overwrite       IN      BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-532A6BDD-3A70-4C8E-A312-E272AF4AB5CA__GUID-2798E9A0-D382-44C9-BD84-C8C872134BA6">
+                           <p class="titleintable">Table 203-20 SETANYSTORAGE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETANYSTORAGE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETANYSTORAGE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e3916">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e3919">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3924" headers="d1297352e3916 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3924 d1297352e3919 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3932" headers="d1297352e3916 ">
+                                       <p><code class="codeph">complexTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3932 d1297352e3919 ">
+                                       <p>Name of the complex type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3940" headers="d1297352e3916 ">
+                                       <p><code class="codeph">sqlTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3940 d1297352e3919 ">
+                                       <p>Name of the SQL type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e3948" headers="d1297352e3916 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e3948 d1297352e3919 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">xsd:any</code> <code class="codeph">child</code> of complex type <code class="codeph">Items</code> is assigned an annotation similar to <code class="codeph">xdb:SQLType="VARCHAR"</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">DECLARE   xml_schema  XMLTYPE;BEGIN   SELECT out INTO xml_schema FROM annotation_tab;   DBMS_XMLSCHEMA_ANNOTATE.setAnyStorage (xml_schema,                                        'Items',                                         'VARCHAR');   UPDATE annotation_tab SET out = xml_schema;END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74377"></a><a id="ARPLS74378"></a><a id="ARPLS74378"></a><a id="ARPLS74377"></a><div class="props_rev_3"><a id="GUID-896205F2-0D87-48C2-BABC-84FB616AD12F" name="GUID-896205F2-0D87-48C2-BABC-84FB616AD12F"></a><h4 id="ARPLS-GUID-896205F2-0D87-48C2-BABC-84FB616AD12F" class="sect4"><span class="enumeration_section">203.3.20 </span>SETDEFAULTTABLE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure sets the name of the table for the specified global element. This is equivalent to using the schema annotation <code class="codeph">xdb:defaultTable="&lt;default_table_name&gt;"</code> for the top-level element.
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETDEFAULTTABLE (
+   xmlschema           IN  OUT  XMLTYPE,
+   globalElementName   IN       VARCHAR2, 
+   tableName           IN       VARCHAR2, 
+   overwrite           IN       BOOLEAN   DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-896205F2-0D87-48C2-BABC-84FB616AD12F__GUID-ADF920B4-B7D5-4059-9DA1-03166019C5B4">
+                           <p class="titleintable">Table 203-21 SETDEFAULTTABLE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETDEFAULTTABLE Procedure Parameters" summary="This table describes the parameters of DBMS_XMLSCHEMA_ANNOTATE.SETDEFAULTTABLE subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e4089">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e4092">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4097" headers="d1297352e4089 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4097 d1297352e4092 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4105" headers="d1297352e4089 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4105 d1297352e4092 ">
+                                       <p>Name of the global element in the schema</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4113" headers="d1297352e4089 ">
+                                       <p><code class="codeph">tableName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4113 d1297352e4092 ">
+                                       <p>Name being assigned to the table</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4121" headers="d1297352e4089 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4121 d1297352e4092 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74482"></a><a id="ARPLS74483"></a><a id="ARPLS74483"></a><a id="ARPLS74482"></a><div class="props_rev_3"><a id="GUID-2AF35E55-2864-465A-94D0-8C52706A65B8" name="GUID-2AF35E55-2864-465A-94D0-8C52706A65B8"></a><h4 id="ARPLS-GUID-2AF35E55-2864-465A-94D0-8C52706A65B8" class="sect4"><span class="enumeration_section">203.3.21 </span>SETOUTOFLINE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure sets the <code class="codeph">SQLInline</code> attribute to <code class="codeph">FALSE</code>, that is, it sets <code class="codeph">xdb:SQLInLine=FALSE</code>.
+                     </p>
+                     <div class="section">
+                        <p>This forces XDB to store the corresponding elements in the XML document out-of-line as rows in a separate <code class="codeph">XMLType</code> table. XDB stores references to each row of the <code class="codeph">XMLType</code> table in a link table that is maintained by the main table
+                        </p>
+                        <p>This procedure can improve performance in some situations if the out-of-line table acts as the driver for the query. Storing elements in an out-of-line table also reduces the numbers of columns in the base table, thus avoiding <code class="codeph">'1000 column limit'</code> errors during XML schema registration, when some elements have complex types with many elements. 
+                        </p>
+                        <div class="infoboxnote" id="GUID-2AF35E55-2864-465A-94D0-8C52706A65B8__GUID-17BEEE3D-0A9A-4F13-A61C-0F1A3D4CDAF2">
+                           <p class="notep1">Also See:</p>
+                           <p><span class="italic">Oracle XML DB Developer's Guide</span></p>
+                        </div>
+                        <p>There are three overloads.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p>
+                        <p>Sets the <code class="codeph">SQLInline</code> attribute to <code class="codeph">FALSE</code>, forcing out-of-line storage for the named element.
+                        </p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETOUTOFLINE (
+   xmlschema          IN OUT  XMLType,  
+   elementName        IN      VARCHAR2, 
+   elementType        IN      VARCHAR2, 
+   defaultTableName   IN      VARCHAR2, 
+   overwrite          IN      BOOLEAN DEFAULT TRUE);
+</pre><p>Sets the <code class="codeph">SQLInline</code> attribute to <code class="codeph">FALSE</code>, forcing out-of-line storage for the element specified by its local and global name. 
+                        </p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETOUTOFLINE (
+   xmlschema          IN OUT  XMLType,
+   globalObject       IN      VARCHAR2,
+   globalObjectName   IN      VARCHAR2, 
+   localElementName   IN      VARCHAR2, 
+   defaultTableName   IN      VARCHAR2, 
+   overwrite          IN      BOOLEAN DEFAULT TRUE);
+</pre><p>Sets the <code class="codeph">SQLInline</code> attribute to <code class="codeph">FALSE</code> to force out-of-line storage and sets the default table name for all references to a particular global element.
+                        </p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETOUTOFLINE (
+   xmlschema         IN OUT  XMLType, 
+   reference         IN      VARCHAR2, 
+   defaultTableName  IN      VARCHAR2, 
+   overwrite         IN      BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-2AF35E55-2864-465A-94D0-8C52706A65B8__GUID-048E5689-E906-48CF-BBD1-F85C4E0FDF41">
+                           <p class="titleintable">Table 203-22 SETOUTOFLINE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETOUTOFLINE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETOUTOFLINE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e4298">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e4301">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4306" headers="d1297352e4298 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4306 d1297352e4301 ">
+                                       <p>The XML schema to be annotated.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4314" headers="d1297352e4298 ">
+                                       <p><code class="codeph">elementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4314 d1297352e4301 ">
+                                       <p>The element name</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4322" headers="d1297352e4298 ">
+                                       <p><code class="codeph">elementType</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4322 d1297352e4301 ">
+                                       <p>The element type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4330" headers="d1297352e4298 ">
+                                       <p><code class="codeph">defaultTable</code><code class="codeph">Name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4330 d1297352e4301 ">
+                                       <p>The name of the default table.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4340" headers="d1297352e4298 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4340 d1297352e4301 ">
+                                       <p>The global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4348" headers="d1297352e4298 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4348 d1297352e4301 ">
+                                       <p>The name of the global object </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4356" headers="d1297352e4298 ">
+                                       <p><code class="codeph">localElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4356 d1297352e4301 ">
+                                       <p>The name of a local element that descends from the global element.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4364" headers="d1297352e4298 ">
+                                       <p><code class="codeph">reference</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4364 d1297352e4301 ">
+                                       <p>A reference to a global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4372" headers="d1297352e4298 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4372 d1297352e4301 ">
+                                       <p>A boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p>After XML schema registration and before loading XML instance data, use <code class="codeph">DBMS_XMLSTORAGE_MANAGE.SCOPEXMLREFERENCES()</code> to make these references scope to the out-of-line table only. This ensures better query performance later on. 
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The following example illustrates the third overloaded method. The element comment will have an annotation similar to <code class="codeph">xdb:defaultTable="CMMNT_DEFAULT_TABLE"</code></p><pre class="oac_no_warn" dir="ltr">DECLARE
+   xml_schema xmltype;
+BEGIN
+SELECT OUT INTO xml_schema FROM annotation_tab;
+ 
+DBMS_XMLSCHEMA_ANNOTATE.SETOUTOFLINE (xml_schema,
+                                       'ipo:comment', 
+                                       'CMMNT_DEFAULT_TABLE');
+UPDATE annotation_tab SET OUT = xml_schema;
+END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74484"></a><a id="ARPLS74485"></a><a id="ARPLS74485"></a><a id="ARPLS74484"></a><div class="props_rev_3"><a id="GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C" name="GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C"></a><h4 id="ARPLS-GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C" class="sect4"><span class="enumeration_section">203.3.22 </span>SETSCHEMAANNOTATATIONS Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure takes the annotated differences resulting from a call to <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.GETSCHEMAANNOTATIONS</code> and patches them into the provided XML schema.
+                     </p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSCHEMAANNOTATIONS (
+   xmlschema     IN OUT xmlType,
+   annotations   IN VARCHAR2);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C__GUID-26FFDE1E-3AF8-4BB7-B296-9DE5AE8EA9F0">
+                           <p class="titleintable">Table 203-23 SETSCHEMAANNOTATIONS Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETSCHEMAANNOTATIONS Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETSCHEMAANNOTATIONS." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e4510">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e4513">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4518" headers="d1297352e4510 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4518 d1297352e4513 ">
+                                       <p>An XML schema to be patched.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4526" headers="d1297352e4510 ">
+                                       <p><code class="codeph">annotations</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4526 d1297352e4513 ">
+                                       <p>The differences document produced by calling <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.</code><code class="codeph">GETSCHEMAANNOTATIONS</code> on the original XML schema and an annotated XML schema.
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Usage Notes</p>
+                        <p><code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.SETSCHEMAANNOTATATIONS</code> is not available on Oracle Database release 10.2 (only Oracle Database release 11.<span class="italic">x</span>).
+                        </p>
+                        <div class="infoboxnotealso" id="GUID-65F8DB01-356A-483F-86C8-5C2CD12DED8C__GUID-3CF6DCA0-9935-491C-AE41-763529DC6B5E">
+                           <p class="notep1">See Also:</p>
+                           <p><a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE" title="This function creates a document containing the differences between the annotated XML schema and the original XML schema.">GETSCHEMAANNOTATIONS Function</a></p>
+                        </div>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The following example illustrates <code class="codeph">DBMS_XMLSCHEMA_ANNOTATE.SETSCHEMAANNOTATIONS</code> shown here and <a href="DBMS_XMLSCHEMA_ANNOTATE.html#GUID-19FC04D3-8FA7-49F5-9F47-73A1BAF52FBE" title="This function creates a document containing the differences between the annotated XML schema and the original XML schema.">GETSCHEMAANNOTATIONS Function</a>.
+                        </p><pre class="oac_no_warn" dir="ltr">-- test getannotations and apply them
+declare
+ xml_schema xmltype;
+ xml_schema2 xmltype;
+ annotations xmltype;
+begin
+   select out into xml_schema from annotation_tab;
+ 
+   -- get the annotations from the schema
+   annotations := DBMS_XMLSCHEMA_ANNOTATE.getSchemaAnnotations (xml_schema);
+ 
+   -- apply the annotations to the schema
+   select inp into xml_schema2 from annotation_tab;
+ 
+   DBMS_XMLSCHEMA_ANNOTATE.setSchemaAnnotations(xml_schema2, annotations);
+ 
+   update annotation_tab t set t.out = xml_schema2;
+end;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74375"></a><a id="ARPLS74376"></a><a id="ARPLS74376"></a><a id="ARPLS74375"></a><div class="props_rev_3"><a id="GUID-E51CF45B-6926-4E38-AC39-6AF1B1402F21" name="GUID-E51CF45B-6926-4E38-AC39-6AF1B1402F21"></a><h4 id="ARPLS-GUID-E51CF45B-6926-4E38-AC39-6AF1B1402F21" class="sect4"><span class="enumeration_section">203.3.23 </span>SETSQLCOLLTYPE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure assigns a SQL type name for a collection. A collection is a global or local element with <code class="codeph">maxOccurs&gt;1</code>. 
+                     </p>
+                     <div class="section">
+                        <p>Using this procedure, XDB creates <code class="codeph">SQLType</code>s with the user-defined names provided.
+                        </p>
+                        <p>There are two overloads. The first sets the name of the SQL collection type corresponding to an XML element and the second to an XML element inside the specified complex type.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSQLCOLLTYPE (
+   xmlschema          IN OUT   XMLTYPE, 
+   elementName        IN       VARCHAR2, 
+   sqlCollType        IN       VARCHAR2, 
+   overwrite          IN       BOOLEAN DEFAULT TRUE);</pre><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSQLCOLLTYPE (
+   xmlschema          IN OUT XMLType,
+   globalObject       IN VARCHAR2, 
+   globalObjectName   IN VARCHAR2, 
+   localElementName   IN VARCHAR2, 
+   sqlCollType        IN VARCHAR2, 
+   overwrite          IN BOOLEAN default TRUE );</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-E51CF45B-6926-4E38-AC39-6AF1B1402F21__GUID-CBB6EA58-64B6-4205-B6B9-25B0E43AACDE">
+                           <p class="titleintable">Table 203-24 SETSQLCOLLTYPE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETSQLCOLLTYPE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETSQLCOLLTYPE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e4695">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e4698">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4703" headers="d1297352e4695 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4703 d1297352e4698 ">
+                                       <p>The XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4711" headers="d1297352e4695 ">
+                                       <p><code class="codeph">elementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4711 d1297352e4698 ">
+                                       <p>The element name</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4719" headers="d1297352e4695 ">
+                                       <p><code class="codeph">sqlCollType</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4719 d1297352e4698 ">
+                                       <p>The SQL collection type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4727" headers="d1297352e4695 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4727 d1297352e4698 ">
+                                       <p>The global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4735" headers="d1297352e4695 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4735 d1297352e4698 ">
+                                       <p>The name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4743" headers="d1297352e4695 ">
+                                       <p><code class="codeph">localElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4743 d1297352e4698 ">
+                                       <p>The name of a local element that descends from the global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4751" headers="d1297352e4695 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4751 d1297352e4698 ">
+                                       <p>A boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">item</code> element will have an annotation similar to <code class="codeph">xdb:SQLCollType="ITEM_SQL_COL_TYPE"</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">declare
+   xml_schema xmltype;
+begin
+   SELECT out INTO xml_schema FROM annotation_tab;
+   DBMS_XMLSCHEMA_ANNOTATE.setSQLCollType (xml_schema,
+                                        'item', 
+                                        'ITEM_SQL_COL_TYPE',TRUE);
+   UPDATE annotation_tab SET out = xml_schema;
+end;</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74379"></a><a id="ARPLS74380"></a><a id="ARPLS74380"></a><a id="ARPLS74379"></a><div class="props_rev_3"><a id="GUID-7D2F40DC-8B56-47A5-A597-6A2360F264BA" name="GUID-7D2F40DC-8B56-47A5-A597-6A2360F264BA"></a><h4 id="ARPLS-GUID-7D2F40DC-8B56-47A5-A597-6A2360F264BA" class="sect4"><span class="enumeration_section">203.3.24 </span>SETSQLNAME Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure assigns a name to the SQL attribute that corresponds to an element defined in the XML schema.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSQLNAME (
+   xmlschema          IN OUT  XMLType,
+   globalObject       IN      VARCHAR2, 
+   globalObjectName   IN      VARCHAR2,
+   localObject        IN      VARCHAR2, 
+   localObjectName    IN      VARCHAR2, 
+   sqlName            IN      VARCHAR2, 
+   overwrite          IN      BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-7D2F40DC-8B56-47A5-A597-6A2360F264BA__GUID-F0EBA0D9-A942-40B8-A862-8D86E92E242E">
+                           <p class="titleintable">Table 203-25 SETSQLNAME Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETSQLNAME Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETSQLNAME." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e4882">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e4885">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4890" headers="d1297352e4882 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4890 d1297352e4885 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4898" headers="d1297352e4882 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4898 d1297352e4885 ">
+                                       <p>Global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4906" headers="d1297352e4882 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4906 d1297352e4885 ">
+                                       <p>Name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4914" headers="d1297352e4882 ">
+                                       <p><code class="codeph">localObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4914 d1297352e4885 ">
+                                       <p>Object descended from the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4922" headers="d1297352e4882 ">
+                                       <p><code class="codeph">localObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4922 d1297352e4885 ">
+                                       <p>Name of the local object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4930" headers="d1297352e4882 ">
+                                       <p><code class="codeph">sqlName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4930 d1297352e4885 ">
+                                       <p>Name of the SQL attribute that corresponds to the element defined in the XML schema</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e4938" headers="d1297352e4882 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e4938 d1297352e4885 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">shipTo</code> element will have an annotation similar to <code class="codeph">xdb:SQLName="SHIPTO_SQLNAME"</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">DECLARE
+   xml_schema   XMLTYPE;
+BEGIN
+   SELECT out INTO xml_schema FROM annotation_tab;
+   DBMS_XMLSCHEMA_ANNOTATE.SETSQLNAME (xml_schema, 
+                                        'element', 'purchaseOrder', 
+                                        'element', 'shipTo',
+                                        'SHIPTO_SQLNAME');   
+   UPDATE annotation_tab SET out = xml_schema;
+END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74381"></a><a id="ARPLS74382"></a><a id="ARPLS74382"></a><a id="ARPLS74381"></a><div class="props_rev_3"><a id="GUID-3876D930-0CF1-4D1B-AAF7-C556404C0254" name="GUID-3876D930-0CF1-4D1B-AAF7-C556404C0254"></a><h4 id="ARPLS-GUID-3876D930-0CF1-4D1B-AAF7-C556404C0254" class="sect4"><span class="enumeration_section">203.3.25 </span>SETSQLTYPE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure assigns a SQL type to a global object. </p>
+                     <div class="section">
+                        <p>There are two overloads. The first overload assigns a SQL Type to a global object, such as a global element or global complex type and the second to a local object.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSQLTYPE (
+   xmlschema            IN OUT   XMLTYPE,
+   globalElementName    IN       VARCHAR2, 
+   sqlType              IN       VARCHAR2, 
+   overwrite            IN       BOOLEAN DEFAULT TRUE);</pre><p></p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSQLTYPE (
+   xmlschema           IN OUT   XMLTYPE,
+   globalObject        IN       VARCHAR2, 
+   globalObjectName    IN       VARCHAR2, 
+   localObject         IN       VARCHAR2, 
+   localObjectName     IN       VARCHAR2,
+   sqlType             IN       VARCHAR2, 
+   overwrite           IN       BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-3876D930-0CF1-4D1B-AAF7-C556404C0254__GUID-64318152-18D1-4E7F-BD54-12E966E996E9">
+                           <p class="titleintable">Table 203-26 SETSQLTYPE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETSQLTYPE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETSQLTYPE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e5075">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e5078">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5083" headers="d1297352e5075 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5083 d1297352e5078 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5091" headers="d1297352e5075 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5091 d1297352e5078 ">
+                                       <p>Global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5099" headers="d1297352e5075 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5099 d1297352e5078 ">
+                                       <p>Name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5107" headers="d1297352e5075 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5107 d1297352e5078 ">
+                                       <p>Name of the global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5115" headers="d1297352e5075 ">
+                                       <p><code class="codeph">localObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5115 d1297352e5078 ">
+                                       <p>Object descended from the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5123" headers="d1297352e5075 ">
+                                       <p><code class="codeph">localObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5123 d1297352e5078 ">
+                                       <p>Name of the local object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5131" headers="d1297352e5075 ">
+                                       <p><code class="codeph">sqlType</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5131 d1297352e5078 ">
+                                       <p>SQL type assigned to the named global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5139" headers="d1297352e5075 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5139 d1297352e5078 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">purchaseOrder</code> element will have an annotation similar to <code class="codeph">xdb:SQLType="PO_SQLTYPE"</code> and the <code class="codeph">shipTo</code> element has one similar to <code class="codeph">xdb:SQLType="VARCHAR"</code>.
+                        </p><pre class="oac_no_warn" dir="ltr">DECLARE
+   xml_schema  xmltype;
+BEGIN
+  SELECT out INTO xml_schema FROM annotation_tab;
+  DBMS_XMLSCHEMA_ANNOTATE.setSQLType (xml_schema, 
+                                        'purchaseOrder', 
+                                        'PO_SQLTYPE');
+  UPDATE annotation_tab SET out = xml_schema;
+END;
+/
+ 
+DECLARE   xml_schema   xmltype;BEGIN  SELECT out INTO xml_schema FROM annotation_tab;  DBMS_XMLSCHEMA_ANNOTATE.setSQLType (xml_schema,                                         'element','purchaseOrder',                                         'element' ,'shipTo',                                        'VARCHAR');  UPDATE annotation_tab SET out = xml_schema;END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74383"></a><a id="ARPLS74384"></a><a id="ARPLS74384"></a><a id="ARPLS74383"></a><div class="props_rev_3"><a id="GUID-3C683E14-5F34-44AF-8072-DE6B000CF11D" name="GUID-3C683E14-5F34-44AF-8072-DE6B000CF11D"></a><h4 id="ARPLS-GUID-3C683E14-5F34-44AF-8072-DE6B000CF11D" class="sect4"><span class="enumeration_section">203.3.26 </span>SETSQLTYPEMAPPING Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure defines a mapping of schema type and SQL type. </p>
+                     <div class="section">
+                        <p>If you use this procedure, you do not need to call the <code class="codeph">SETSQLTYPE</code> procedure on all instances of the schema type; instead the procedure traverses the schema and assigns the SQL type automatically.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETSQLTYPEMAPPING (
+   xmlschema         IN OUT   XMLType, 
+   schemaTypeName    IN       VARCHAR2, 
+   sqlTypeName       IN       VARCHAR2, 
+   overwrite         IN       BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-3C683E14-5F34-44AF-8072-DE6B000CF11D__GUID-A23E98C3-8962-4C78-9976-2049DFBCC3A7">
+                           <p class="titleintable">Table 203-27 SETSQLTYPEMAPPING Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETSQLTYPEMAPPING Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETSQLTYPEMAPPING." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e5283">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e5286">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5291" headers="d1297352e5283 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5291 d1297352e5286 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5299" headers="d1297352e5283 ">
+                                       <p><code class="codeph">schemaTypeName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5299 d1297352e5286 ">
+                                       <p>Schema type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5307" headers="d1297352e5283 ">
+                                       <p><code class="codeph">sqlType</code>Name
+                                       </p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5307 d1297352e5286 ">
+                                       <p>Name of the SQL type</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5316" headers="d1297352e5283 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5316 d1297352e5286 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code></p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The attribute <code class="codeph">orderDate</code> will have an annotation similar to <code class="codeph">xdb:SQLType="DATE"</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">declare   xml_schema xmltype;beginSELECT out INTO xml_schema FROM annotation_tab;DBMS_XMLSCHEMA_ANNOTATE.setSQLTypeMapping (xml_schema,                                         'date',                                         'DATE');UPDATE annotation_tab SET out = xml_schema;end;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74385"></a><a id="ARPLS74386"></a><a id="ARPLS74386"></a><a id="ARPLS74385"></a><div class="props_rev_3"><a id="GUID-A0C08FAF-8233-40EC-B9CF-1F70D2380B5C" name="GUID-A0C08FAF-8233-40EC-B9CF-1F70D2380B5C"></a><h4 id="ARPLS-GUID-A0C08FAF-8233-40EC-B9CF-1F70D2380B5C" class="sect4"><span class="enumeration_section">203.3.27 </span>SETTABLEPROPS Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure specifies properties in the <code class="codeph">TABLE</code> storage clause that is appended to the default <code class="codeph">CREATE TABLE</code> statement. 
+                     </p>
+                     <div class="section">
+                        <p>There are two overloads with different parameter requirements, as indicated:</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETTABLEPROPS (
+   xmlschema            IN OUT  XMLType, 
+   globalElementName    IN      VARCHAR2, 
+   tableProps           IN      VARCHAR2,    
+   overwrite            IN      BOOLEAN DEFAULT TRUE);</pre><p></p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.SETTABLEPROPS (
+   xmlschema            IN OUT  XMLTYPE,
+   globalObject         IN      VARCHAR2, 
+   globalObjectName     IN      VARCHAR2, 
+   localElementName     IN      VARCHAR2, 
+   tableProps           IN      VARCHAR2, 
+   overwrite            IN      BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-A0C08FAF-8233-40EC-B9CF-1F70D2380B5C__GUID-A05B07E7-65EC-4A77-A503-D8484F33355B">
+                           <p class="titleintable">Table 203-28 SETTABLEPROPS Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETTABLEPROPS Procedure Parameters" summary="This table describes the parameters of SETTABLEPROPS" width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e5458">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e5461">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5466" headers="d1297352e5458 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5466 d1297352e5461 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5474" headers="d1297352e5458 ">
+                                       <p><code class="codeph">globalElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5474 d1297352e5461 ">
+                                       <p>Name of the global element in the schema</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5482" headers="d1297352e5458 ">
+                                       <p><code class="codeph">tableProps</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5482 d1297352e5461 ">
+                                       <p>Table properties</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5490" headers="d1297352e5458 ">
+                                       <p><code class="codeph">globalObject</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5490 d1297352e5461 ">
+                                       <p>Global object (global complex type or global element) </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5498" headers="d1297352e5458 ">
+                                       <p><code class="codeph">globalObjectName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5498 d1297352e5461 ">
+                                       <p>Name of the global object</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5506" headers="d1297352e5458 ">
+                                       <p><code class="codeph">localElementName</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5506 d1297352e5461 ">
+                                       <p>Name of a local element that descends from the global element</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5514" headers="d1297352e5458 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5514 d1297352e5461 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Example</p>
+                        <p>The <code class="codeph">purchaseOrder</code> element will have an annotation similar to <code class="codeph">xdb:tableProps="CACHE"</code>. 
+                        </p><pre class="oac_no_warn" dir="ltr">DECLARE   xml_schema XMLTYPE;BEGIN   SELECT out INTO xml_schema FROM annotation_tab;   DBMS_XMLSCHEMA_ANNOTATE.SETTABLEPROPS(xml_schema,                                         'purchaseOrder' ,'CACHE');   UPDATE annotation_tab SET out = xml_schema;END;
+/</pre></div>
+                     <!-- class="section" -->
+                  </div>
+               </div><a id="ARPLS74387"></a><a id="ARPLS74388"></a><a id="ARPLS74388"></a><a id="ARPLS74387"></a><div class="props_rev_3"><a id="GUID-530450A7-98FB-47F0-9B25-58E2596A8DED" name="GUID-530450A7-98FB-47F0-9B25-58E2596A8DED"></a><h4 id="ARPLS-GUID-530450A7-98FB-47F0-9B25-58E2596A8DED" class="sect4"><span class="enumeration_section">203.3.28 </span>SETTIMESTAMPWITHTIMEZONE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure sets the <code class="codeph">TIMESTAMPWITHTIMEZONE</code> datatype to all <code class="codeph">dateTime</code> typed elements in the XML schema.
+                     </p>
+                     <div class="section">
+                        <p>This is equivalent to adding <code class="codeph">xdb:SQLType="TIMESTAMP WITH TIME ZONE"</code> to all <code class="codeph">dateTime</code> objects.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="oac_no_warn" dir="ltr">DBMS_XMLSCHEMA_ANNOTATE.<code class="codeph">SETTIMESTAMPWITHTIMEZONE</code> (
+   xmlschema      IN OUT   XMLTYPE, 
+   overwrite      IN       BOOLEAN DEFAULT TRUE);</pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-530450A7-98FB-47F0-9B25-58E2596A8DED__GUID-A64561F0-A214-4792-9748-C3B1E36056E2">
+                           <p class="titleintable">Table 203-29 SETTIMESTAMPWITHTIMEZONE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SETTIMESTAMPWITHTIMEZONE Procedure Parameters" summary="This table describes parameters used by subprogram DBMS_XMLSCHEMA_ANNOTATE.SETTIMESTAMPWITHTIMEZONE." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" width="31%" id="d1297352e5663">Parameter</th>
+                                    <th align="left" valign="bottom" width="69%" id="d1297352e5666">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5671" headers="d1297352e5663 ">
+                                       <p><code class="codeph">xmlschema</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5671 d1297352e5666 ">
+                                       <p>XML schema to be annotated</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" width="31%" id="d1297352e5679" headers="d1297352e5663 ">
+                                       <p><code class="codeph">overwrite</code></p>
+                                    </td>
+                                    <td align="left" valign="top" width="69%" headers="d1297352e5679 d1297352e5666 ">
+                                       <p>Boolean that indicates whether or not the procedure overwrites element attributes. The default is <code class="codeph">TRUE</code>. 
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+   </body>
+</html>

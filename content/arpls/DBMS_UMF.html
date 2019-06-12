@@ -1,0 +1,1112 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html xml:lang="en-us" lang="en-us">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="abstract" content="The DBMS_UMF package provides an interface for deploying the Remote Management Framework (RMF) for an Oracle Database. The RMF is used for collecting performance statistics for an Oracle Database.">
+      <meta name="description" content="The DBMS_UMF package provides an interface for deploying the Remote Management Framework (RMF) for an Oracle Database. The RMF is used for collecting performance statistics for an Oracle Database.">
+      <title>DBMS_UMF</title>
+      <meta property="og:site_name" content="Oracle Help Center">
+      <meta property="og:title" content="Database PL/SQL Packages and Types Reference">
+      <meta property="og:description" content="The DBMS_UMF package provides an interface for deploying the Remote Management Framework (RMF) for an Oracle Database. The RMF is used for collecting performance statistics for an Oracle Database.">
+      <link rel="stylesheet" href="/sp_common/book-template/ohc-book-template/css/book.css">
+      <link rel="shortcut icon" href="/sp_common/book-template/ohc-common/img/favicon.ico">
+      <meta name="application-name" content="Database PL/SQL Packages and Types Reference">
+      <meta name="generator" content="DITA Open Toolkit version 1.8.5 (Mode = doc)">
+      <meta name="plugin" content="SP_docbuilder HTML plugin release 18.2.2">
+      <link rel="alternate" href="database-pl-sql-packages-and-types-reference.pdf" title="PDF File" type="application/pdf">
+      <meta name="robots" content="all">
+      <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+      <meta name="dcterms.created" content="2018-03-15T02:42:46-07:00">
+      <meta name="dcterms.title" content="Database PL/SQL Packages and Types Reference">
+      <meta name="dcterms.dateCopyrighted" content="1996, 2018">
+      <meta name="dcterms.category" content="database">
+      <meta name="dcterms.identifier" content="E85717-03">
+      
+      <meta name="dcterms.product" content="en/database/oracle/oracle-database/12.2">
+      <meta name="dcterms.release" content="Release 12.2">
+      <link rel="prev" href="DBMS_TYPES.html" title="Previous" type="text/html">
+      <link rel="next" href="DBMS_UTILITY.html" title="Next" type="text/html">
+      <script>
+        document.write('<style type="text/css">');
+        document.write('body > .noscript, body > .noscript ~ * { visibility: hidden; }');
+        document.write('</style>');
+     </script>
+      <script data-main="/sp_common/book-template/ohc-book-template/js/book-config" src="/sp_common/book-template/requirejs/require.js"></script>
+      <script>
+            if (window.require === undefined) {
+                document.write('<script data-main="sp_common/book-template/ohc-book-template/js/book-config" src="sp_common/book-template/requirejs/require.js"><\/script>');
+                document.write('<link href="sp_common/book-template/ohc-book-template/css/book.css" rel="stylesheet"/>');
+            }
+        </script>
+      <script type="application/json" id="ssot-metadata">{"primary":{"category":{"short_name":"database","element_name":"Database","display_in_url":true},"suite":{"short_name":"oracle","element_name":"Oracle","display_in_url":true},"product_group":{"short_name":"not-applicable","element_name":"Not applicable","display_in_url":false},"product":{"short_name":"oracle-database","element_name":"Oracle Database","display_in_url":true},"release":{"short_name":"12.2","element_name":"Release 12.2","display_in_url":true}}}</script>
+      
+    <meta name="dcterms.isVersionOf" content="ARPLS">
+  </head>
+   <body>
+      <div class="noscript alert alert-danger text-center" role="alert">
+         <a href="DBMS_TYPES.html" class="pull-left"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>Previous</a>
+         <a href="DBMS_UTILITY.html" class="pull-right">Next<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+         <span class="fa fa-exclamation-triangle" aria-hidden="true"></span> JavaScript must be enabled to correctly display this content
+        
+      </div>
+      <article>
+         <header>
+            <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
+               <li property="itemListElement" typeof="ListItem"><a href="index.html" property="item" typeof="WebPage"><span property="name">Database PL/SQL Packages and Types Reference</span></a></li>
+               <li class="active" property="itemListElement" typeof="ListItem">DBMS_UMF</li>
+            </ol>
+            <a id="GUID-9B44C2DE-512A-4B55-B91E-9828FCF04BFD" name="GUID-9B44C2DE-512A-4B55-B91E-9828FCF04BFD"></a>
+            
+            <h2 id="ARPLS-GUID-9B44C2DE-512A-4B55-B91E-9828FCF04BFD" class="sect2"><span class="enumeration_chapter">178 </span>DBMS_UMF
+            </h2>
+         </header>
+         <div class="ind">
+            <div>
+               <p>The <code class="codeph">DBMS_UMF</code> package provides an interface for deploying the Remote Management Framework (RMF) for an Oracle Database. The RMF is used for collecting performance statistics for an Oracle Database.
+               </p>
+               <div class="infoboxnotealso" id="GUID-9B44C2DE-512A-4B55-B91E-9828FCF04BFD__GUID-7AD8159F-DD58-4195-A62B-67B4774E0ED9">
+                  <p class="notep1">See Also:</p>
+                  <p> <a href="../tgdba/gathering-database-statistics.html#TGDBA-GUID-E1369092-DA6B-4CF4-B286-69D4A3BDFA1E"><span class="italic">Oracle Database Performance Tuning Guide</span></a> for more information about configuring the RMF for an Oracle Database.
+                  </p>
+               </div>
+               <p>This chapter contains the following topic:</p>
+               <ul style="list-style-type: disc;">
+                  <li>
+                     <p><a href="DBMS_UMF.html#GUID-2B102D04-F292-4A24-9687-01DE316992DB" title="This topic lists the DBMS_UMF subprograms in alphabetical order and briefly describes them.">Summary of DBMS_UMF Subprograms</a></p>
+                  </li>
+               </ul>
+            </div>
+            <div class="sect2"><a id="GUID-2B102D04-F292-4A24-9687-01DE316992DB" name="GUID-2B102D04-F292-4A24-9687-01DE316992DB"></a><h3 id="ARPLS-GUID-2B102D04-F292-4A24-9687-01DE316992DB" class="sect3"><span class="enumeration_section">178.1 </span>Summary of DBMS_UMF Subprograms
+               </h3>
+               <div>
+                  <p>This topic lists the <code class="codeph">DBMS_UMF</code> subprograms in alphabetical order and briefly describes them. 
+                  </p>
+                  <div class="tblformal" id="GUID-2B102D04-F292-4A24-9687-01DE316992DB__GUID-E7ABDE69-D0CD-4F7C-B1D0-B597C3839E64">
+                     <p class="titleintable">Table 178-1 DBMS_UMF Package Subprograms</p>
+                     <table cellpadding="4" cellspacing="0" class="Formal" title="DBMS_UMF Package Subprograms" summary="This table lists the DBMS_UMF subprograms in alphabetical order and briefly describes them." width="100%" frame="hsides" border="1" rules="rows">
+                        <thead>
+                           <tr align="left" valign="top">
+                              <th align="left" valign="bottom" id="d1094000e204">Subprogram</th>
+                              <th align="left" valign="bottom" id="d1094000e207">Description</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e212" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-D01FF454-BE38-453A-A975-1604D91EB1BA" title="This procedure configures a node that needs to be registered with the RMF topology. This procedure must be executed on the node that needs to be configured.">CONFIGURE_NODE Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e212 d1094000e207 ">
+                                 <p>Configures a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e223" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-A9F71D4D-418E-4A3F-A46B-6D49251B2185" title="This procedure creates database links between two nodes in the RMF topology. This procedure must be executed only on the destination node.">CREATE_LINK Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e223 d1094000e207 ">
+                                 <p>Creates a database link between two nodes in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e234" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-CD666753-4EFA-42D9-8A91-E06101B98C94" title="This procedure creates the RMF topology and designates the node on which it is executed as the destination node for that topology.">CREATE_TOPOLOGY Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e234 d1094000e207 ">
+                                 <p>Creates the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e245" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-7D9C5C0E-ED0F-4E41-8D55-3E8B1D785BEA" title="This procedure removes the database links between two nodes in the RMF topology. This procedure must be executed only on the destination node.">DROP_LINK Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e245 d1094000e207 ">
+                                 <p>Removes a database link between two nodes in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e256" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-F9F8FBEB-5A39-4132-866B-8803EA3B3013" title="This procedure deletes the RMF topology. This procedure must be executed only on the destination node.">DROP_TOPOLOGY Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e256 d1094000e207 ">
+                                 <p>Deletes the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e267" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-59E9E343-1444-44DC-910C-0179B073B472" title="This procedure enables a service, such as the AWR service, on a node in the RMF topology. This procedure must be executed only on the destination node.">ENABLE_SERVICE Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e267 d1094000e207 ">
+                                 <p>Enables a service on a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e278" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-77AF2041-AAB7-40E4-9785-188811953825" title="This function returns the node ID of the node in the RMF topology on which this function is executed.">GET_NODE_ID_LOCAL Function</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e278 d1094000e207 ">
+                                 <p>Returns the node ID of a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e289" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-F04C8EB7-93B7-4082-9520-C4A6397B9BB2" title="This function returns the name of the node in the RMF topology on which this function is executed.">GET_NODE_NAME_LOCAL Function</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e289 d1094000e207 ">
+                                 <p>Returns the node name of a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e300" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-0E5DD406-4F33-40FB-B52E-6522F984E7EE" title="This function returns the ID of the destination node in the RMF topology. This function can be executed on any node in the RMF topology.">GET_TARGET_ID Function</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e300 d1094000e207 ">
+                                 <p>Returns the destination ID in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e311" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-D2F04009-377E-4509-A811-997CE964F24C" title="This function returns the name of the active RMF topology of the node on which this function is executed.">GET_TOPOLOGY_NAME_LOCAL Function</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e311 d1094000e207 ">
+                                 <p>Returns the RMF topology name of the local node</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e322" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-39FC3C94-386A-4D51-89BA-C2F3B8833E2F" title="This procedure returns the name of the database link between two nodes in the RMF topology. This procedure can be executed on any node in the RMF topology.">QUERY_LINK_INFO Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e322 d1094000e207 ">
+                                 <p>Returns the information about a database link in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e334" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-8BC3AE51-8552-436F-92EC-A53A52D99191" title="This procedure returns information about a node in the RMF topology. This procedure can be executed on any node in the RMF topology.">QUERY_NODE_INFO Procedures</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e334 d1094000e207 ">
+                                 <p>Returns the information about a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e345" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-76417AF2-571C-44CC-9E0B-5334FBBFA54D" title="This function and procedure registers a node with the RMF topology. This procedure and function must be executed only on the destination node in the RMF topology.">REGISTER_NODE Function and Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e345 d1094000e207 ">
+                                 <p>Registers a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e356" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-A8A76037-66B7-4DEA-8883-38FB5057A6A3" title="This procedure makes the candidate destination as the new destination in the RMF topology. This procedure must be executed only on the candidate destination node.">SWITCH_DESTINATION Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e356 d1094000e207 ">
+                                 <p>Designates a source node as a destination node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e367" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-D22BA9EB-98D1-4EE5-83CC-ED749D878655" title="This procedure removes the configuration details of the node on which this procedure is executed.">UNCONFIGURE_NODE Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e367 d1094000e207 ">
+                                 <p>Resets the configuration of a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                           <tr align="left" valign="top">
+                              <td align="left" valign="top" id="d1094000e378" headers="d1094000e204 ">
+                                 <p><a href="DBMS_UMF.html#GUID-56558388-7FAC-4BF7-90CD-C99B84DE73DE" title="This procedure removes a node for the RMF topology. This procedure must be executed only on the destination node.">UNREGISTER_NODE Procedure</a></p>
+                              </td>
+                              <td align="left" valign="top" headers="d1094000e378 d1094000e207 ">
+                                 <p>Removes the registration of a node in the RMF topology</p>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <!-- class="inftblhruleinformal" -->
+               </div>
+               <div class="sect3"><a id="GUID-D01FF454-BE38-453A-A975-1604D91EB1BA" name="GUID-D01FF454-BE38-453A-A975-1604D91EB1BA"></a><h4 id="ARPLS-GUID-D01FF454-BE38-453A-A975-1604D91EB1BA" class="sect4"><span class="enumeration_section">178.1.1 </span>CONFIGURE_NODE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure configures a node that needs to be registered with the RMF topology. This procedure must be executed on the node that needs to be configured.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.CONFIGURE_NODE(
+   node_name          IN VARCHAR2 DEFAULT NULL,
+   dblink_to_target   IN VARCHAR2 DEFAULT NULL);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-D01FF454-BE38-453A-A975-1604D91EB1BA__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-2 CONFIGURE_NODE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="CONFIGURE_NODE Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.CONFIGURE_NODE subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e491">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e494">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e499" headers="d1094000e491 ">
+                                       <p><code class="codeph">node_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e499 d1094000e494 ">
+                                       <p>Name of the node.</p>
+                                       <p>Each node in the RMF topology must be assigned a unique name. If a name is not provided for a node in this procedure, then the value of the initialization parameter <code class="codeph">DB_UNIQUE_NAME</code> is assigned as the name for the node by default.
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e512" headers="d1094000e491 ">
+                                       <p><code class="codeph">dblink_to_target</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e512 d1094000e494 ">
+                                       <p>Database link from this node to the destination node.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-A9F71D4D-418E-4A3F-A46B-6D49251B2185" name="GUID-A9F71D4D-418E-4A3F-A46B-6D49251B2185"></a><h4 id="ARPLS-GUID-A9F71D4D-418E-4A3F-A46B-6D49251B2185" class="sect4"><span class="enumeration_section">178.1.2 </span>CREATE_LINK Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure creates database links between two nodes in the RMF topology. This procedure must be executed only on the destination node.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.CREATE_LINK(
+   topology_name      IN VARCHAR2,
+   node_a_name        IN VARCHAR2,
+   node_b_name        IN VARCHAR2,
+   dblink_a_to_b      IN VARCHAR2,
+   dblink_b_to_a      IN VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-A9F71D4D-418E-4A3F-A46B-6D49251B2185__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-3 CREATE_LINK Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="CREATE_LINK Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.CREATE_LINK subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e634">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e637">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e642" headers="d1094000e634 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e642 d1094000e637 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e650" headers="d1094000e634 ">
+                                       <p><code class="codeph">node_a_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e650 d1094000e637 ">
+                                       <p>Name of the first node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e658" headers="d1094000e634 ">
+                                       <p><code class="codeph">node_b_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e658 d1094000e637 ">
+                                       <p>Name of the second node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e666" headers="d1094000e634 ">
+                                       <p><code class="codeph">dblink_a_to_b</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e666 d1094000e637 ">
+                                       <p>Database link from the first node to the second node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e674" headers="d1094000e634 ">
+                                       <p><code class="codeph">dblink_b_to_b</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e674 d1094000e637 ">
+                                       <p>Database link from the second node to the first node.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-CD666753-4EFA-42D9-8A91-E06101B98C94" name="GUID-CD666753-4EFA-42D9-8A91-E06101B98C94"></a><h4 id="ARPLS-GUID-CD666753-4EFA-42D9-8A91-E06101B98C94" class="sect4"><span class="enumeration_section">178.1.3 </span>CREATE_TOPOLOGY Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure creates the RMF topology and designates the node on which it is executed as the destination node for that topology.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.CREATE_TOPOLOGY(
+   topology_name IN VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-CD666753-4EFA-42D9-8A91-E06101B98C94__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-4 CREATE_TOPOLOGY Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="CREATE_TOPOLOGY Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.CREATE_TOPOLOGY subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e795">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e798">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e803" headers="d1094000e795 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e803 d1094000e798 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-7D9C5C0E-ED0F-4E41-8D55-3E8B1D785BEA" name="GUID-7D9C5C0E-ED0F-4E41-8D55-3E8B1D785BEA"></a><h4 id="ARPLS-GUID-7D9C5C0E-ED0F-4E41-8D55-3E8B1D785BEA" class="sect4"><span class="enumeration_section">178.1.4 </span>DROP_LINK Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes the database links between two nodes in the RMF topology. This procedure must be executed only on the destination node.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.DROP_LINK(
+   topology_name  IN VARCHAR2,
+   node_a_name    IN VARCHAR2,
+   node_b_name    IN VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-7D9C5C0E-ED0F-4E41-8D55-3E8B1D785BEA__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-5 DROP_LINK Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="DROP_LINK Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.DROP_LINK subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e924">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e927">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e932" headers="d1094000e924 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e932 d1094000e927 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e940" headers="d1094000e924 ">
+                                       <p><code class="codeph">node_a_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e940 d1094000e927 ">
+                                       <p>Name of the first node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e948" headers="d1094000e924 ">
+                                       <p><code class="codeph">node_b_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e948 d1094000e927 ">
+                                       <p>Name of the second node.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-F9F8FBEB-5A39-4132-866B-8803EA3B3013" name="GUID-F9F8FBEB-5A39-4132-866B-8803EA3B3013"></a><h4 id="ARPLS-GUID-F9F8FBEB-5A39-4132-866B-8803EA3B3013" class="sect4"><span class="enumeration_section">178.1.5 </span>DROP_TOPOLOGY Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure deletes the RMF topology. This procedure must be executed only on the destination node.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.DROP_TOPOLOGY(
+   topology_name IN VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-F9F8FBEB-5A39-4132-866B-8803EA3B3013__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-6 DROP_TOPOLOGY Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="DROP_TOPOLOGY Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.DROP_TOPOLOGY subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e1070">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e1073">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1078" headers="d1094000e1070 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1078 d1094000e1073 ">
+                                       <p>Name of the topology to delete.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-59E9E343-1444-44DC-910C-0179B073B472" name="GUID-59E9E343-1444-44DC-910C-0179B073B472"></a><h4 id="ARPLS-GUID-59E9E343-1444-44DC-910C-0179B073B472" class="sect4"><span class="enumeration_section">178.1.6 </span>ENABLE_SERVICE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure enables a service, such as the AWR service, on a node in the RMF topology. This procedure must be executed only on the destination node.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.ENABLE_SERVICE(
+   topology_name      IN VARCHAR2,
+   node_name          IN VARCHAR2,
+   service_type       IN NUMBER);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-59E9E343-1444-44DC-910C-0179B073B472__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-7 ENABLE_SERVICE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="ENABLE_SERVICE Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.ENABLE_SERVICE subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e1199">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e1202">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1207" headers="d1094000e1199 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1207 d1094000e1202 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1215" headers="d1094000e1199 ">
+                                       <p><code class="codeph">node_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1215 d1094000e1202 ">
+                                       <p>Name of the node on which a specific service needs to be enabled.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1223" headers="d1094000e1199 ">
+                                       <p><code class="codeph">service_type</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1223 d1094000e1202 ">
+                                       <p>Numeric constant identifying the service. The only allowed value for this parameter is <code class="codeph">UMF_SERVICE_TYPE_AWR</code>, which is Automatic Workload Repository (AWR) service.
+                                       </p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-77AF2041-AAB7-40E4-9785-188811953825" name="GUID-77AF2041-AAB7-40E4-9785-188811953825"></a><h4 id="ARPLS-GUID-77AF2041-AAB7-40E4-9785-188811953825" class="sect4"><span class="enumeration_section">178.1.7 </span>GET_NODE_ID_LOCAL Function
+                  </h4>
+                  <div>
+                     <p>This function returns the node ID of the node in the RMF topology on which this function is executed.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.GET_NODE_ID_LOCAL(
+   topology_name  IN  VARCHAR2 DEFAULT NULL)
+ RETURN NUMBER;
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-77AF2041-AAB7-40E4-9785-188811953825__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-8 GET_NODE_ID_LOCAL Function Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="GET_NODE_ID_LOCAL Function Parameters" summary="This table describes the parameters of the DBMS_UMF.GET_NODE_ID_LOCAL subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e1347">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e1350">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1355" headers="d1094000e1347 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1355 d1094000e1350 ">
+                                       <p>Name of the RMF topology with which the node is registered.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Value</p>
+                        <p>Returns the node ID of the node in the RMF topology on which this function is executed.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this function.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-F04C8EB7-93B7-4082-9520-C4A6397B9BB2" name="GUID-F04C8EB7-93B7-4082-9520-C4A6397B9BB2"></a><h4 id="ARPLS-GUID-F04C8EB7-93B7-4082-9520-C4A6397B9BB2" class="sect4"><span class="enumeration_section">178.1.8 </span>GET_NODE_NAME_LOCAL Function
+                  </h4>
+                  <div>
+                     <p>This function returns the name of the node in the RMF topology on which this function is executed.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.GET_NODE_NAME_LOCAL RETURN VARCHAR2;
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Value</p>
+                        <p>Returns the name of the node in the RMF topology on which this function is executed.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-0E5DD406-4F33-40FB-B52E-6522F984E7EE" name="GUID-0E5DD406-4F33-40FB-B52E-6522F984E7EE"></a><h4 id="ARPLS-GUID-0E5DD406-4F33-40FB-B52E-6522F984E7EE" class="sect4"><span class="enumeration_section">178.1.9 </span>GET_TARGET_ID Function
+                  </h4>
+                  <div>
+                     <p>This function returns the ID of the destination node in the RMF topology. This function can be executed on any node in the RMF topology.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.GET_TARGET_ID(
+   topology_name  IN  VARCHAR2)
+ RETURN NUMBER;
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-0E5DD406-4F33-40FB-B52E-6522F984E7EE__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-9 GET_TARGET_ID Function Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="GET_TARGET_ID Function Parameters" summary="This table describes the parameters of the DBMS_UMF.GET_TARGET_ID subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e1588">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e1591">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1596" headers="d1094000e1588 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1596 d1094000e1591 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Value</p>
+                        <p>Returns the ID of the destination node in the RMF topology.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-D2F04009-377E-4509-A811-997CE964F24C" name="GUID-D2F04009-377E-4509-A811-997CE964F24C"></a><h4 id="ARPLS-GUID-D2F04009-377E-4509-A811-997CE964F24C" class="sect4"><span class="enumeration_section">178.1.10 </span>GET_TOPOLOGY_NAME_LOCAL Function
+                  </h4>
+                  <div>
+                     <p>This function returns the name of the active RMF topology of the node on which this function is executed.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.GET_TOPOLOGY_NAME_LOCAL RETURN VARCHAR2;
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Value</p>
+                        <p>Returns the name of the active RMF topology of the node on which this function is executed.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-39FC3C94-386A-4D51-89BA-C2F3B8833E2F" name="GUID-39FC3C94-386A-4D51-89BA-C2F3B8833E2F"></a><h4 id="ARPLS-GUID-39FC3C94-386A-4D51-89BA-C2F3B8833E2F" class="sect4"><span class="enumeration_section">178.1.11 </span>QUERY_LINK_INFO Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure returns the name of the database link between two nodes in the RMF topology. This procedure can be executed on any node in the RMF topology.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.QUERY_LINK_INFO(
+   topology_name      IN   VARCHAR2,
+   from_node_id       IN   NUMBER,
+   to_node_id         IN   NUMBER,
+   link_name          OUT  VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-39FC3C94-386A-4D51-89BA-C2F3B8833E2F__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-10 QUERY_LINK_INFO Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="QUERY_LINK_INFO Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.QUERY_LINK_INFO subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e1829">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e1832">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1837" headers="d1094000e1829 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1837 d1094000e1832 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1845" headers="d1094000e1829 ">
+                                       <p><code class="codeph">from_node_id</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1845 d1094000e1832 ">
+                                       <p>Node ID of the first node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1853" headers="d1094000e1829 ">
+                                       <p><code class="codeph">to_node_id</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1853 d1094000e1832 ">
+                                       <p>Node ID of the second node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1861" headers="d1094000e1829 ">
+                                       <p><code class="codeph">link_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1861 d1094000e1832 ">
+                                       <p>Name of the database link from the first node to the second node returned by the procedure.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-8BC3AE51-8552-436F-92EC-A53A52D99191" name="GUID-8BC3AE51-8552-436F-92EC-A53A52D99191"></a><h4 id="ARPLS-GUID-8BC3AE51-8552-436F-92EC-A53A52D99191" class="sect4"><span class="enumeration_section">178.1.12 </span>QUERY_NODE_INFO Procedures
+                  </h4>
+                  <div>
+                     <p>This procedure returns information about a node in the RMF topology. This procedure can be executed on any node in the RMF topology.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.QUERY_NODE_INFO(
+   topology_name      IN    VARCHAR2  DEFAULT NULL,
+   node_name          IN    VARCHAR2,
+   node_id            OUT   NUMBER);
+
+DBMS_UMF.QUERY_NODE_INFO(
+   node_id            IN    NUMBER,
+   topology_name      OUT   VARCHAR2,
+   node_name          OUT   VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-8BC3AE51-8552-436F-92EC-A53A52D99191__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-11 QUERY_NODE_INFO Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="QUERY_NODE_INFO Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.QUERY_NODE_INFO subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e1982">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e1985">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1990" headers="d1094000e1982 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1990 d1094000e1985 ">
+                                       <p>Name of the RMF topology with which the node is registered.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e1998" headers="d1094000e1982 ">
+                                       <p><code class="codeph">node_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e1998 d1094000e1985 ">
+                                       <p>Name of the node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2006" headers="d1094000e1982 ">
+                                       <p><code class="codeph">node_id</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2006 d1094000e1985 ">
+                                       <p>Identifier of the node.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-76417AF2-571C-44CC-9E0B-5334FBBFA54D" name="GUID-76417AF2-571C-44CC-9E0B-5334FBBFA54D"></a><h4 id="ARPLS-GUID-76417AF2-571C-44CC-9E0B-5334FBBFA54D" class="sect4"><span class="enumeration_section">178.1.13 </span>REGISTER_NODE Function and Procedure
+                  </h4>
+                  <div>
+                     <p>This function and procedure registers a node with the RMF topology. This procedure and function must be executed only on the destination node in the RMF topology.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.REGISTER_NODE(
+   topology_name          IN  VARCHAR2,
+   node_name              IN  VARCHAR2,
+   dblink_to_node         IN  VARCHAR2 DEFAULT NULL,
+   dblink_from_node       IN  VARCHAR2 DEFAULT NULL,
+   as_source              IN  VARCHAR2 DEFAULT 'TRUE',
+   as_candidate_target    IN  VARCHAR2 DEFAULT 'FALSE');
+
+DBMS_UMF.REGISTER_NODE(
+   topology_name          IN  VARCHAR2,
+   node_name              IN  VARCHAR2,
+   dblink_to_node         IN  VARCHAR2 DEFAULT NULL,
+   dblink_from_node       IN  VARCHAR2 DEFAULT NULL,
+   as_source              IN  VARCHAR2 DEFAULT 'TRUE',
+   as_candidate_target    IN  VARCHAR2 DEFAULT 'FALSE');
+   node_id                OUT VARCHAR2);
+
+DBMS_UMF.REGISTER_NODE(
+   topology_name          IN  VARCHAR2,
+   node_name              IN  VARCHAR2,
+   dblink_to_node         IN  VARCHAR2 DEFAULT NULL,
+   dblink_from_node       IN  VARCHAR2 DEFAULT NULL,
+   as_source              IN  VARCHAR2 DEFAULT 'TRUE',
+   as_candidate_target    IN  VARCHAR2 DEFAULT 'FALSE')
+ RETURN NUMBER;
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-76417AF2-571C-44CC-9E0B-5334FBBFA54D__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-12 REGISTER_NODE Function and Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="REGISTER_NODE Function and Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.REGISTER_NODE subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e2127">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e2130">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2135" headers="d1094000e2127 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2135 d1094000e2130 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2143" headers="d1094000e2127 ">
+                                       <p><code class="codeph">node_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2143 d1094000e2130 ">
+                                       <p>Name of the node to register.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2151" headers="d1094000e2127 ">
+                                       <p><code class="codeph">dblink_to_node</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2151 d1094000e2130 ">
+                                       <p>Name for the database link from the destination to the node.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2159" headers="d1094000e2127 ">
+                                       <p><code class="codeph">dblink_from_node</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2159 d1094000e2130 ">
+                                       <p>Name for the database link from the node to the destination.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2167" headers="d1094000e2127 ">
+                                       <p><code class="codeph">as_source</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2167 d1094000e2130 ">
+                                       <p>Set to <code class="codeph">TRUE</code>, if the node is a source, else set to <code class="codeph">FALSE</code>.
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2181" headers="d1094000e2127 ">
+                                       <p><code class="codeph">as_candidate_target</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2181 d1094000e2130 ">
+                                       <p>Set to <code class="codeph">TRUE</code>, if the node is a candidate destination, else set to <code class="codeph">FALSE</code>.
+                                       </p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2195" headers="d1094000e2127 ">
+                                       <p><code class="codeph">node_id</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2195 d1094000e2130 ">
+                                       <p>Node ID returned by the procedure.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Return Value</p>
+                        <p>Returns the node ID of the registered node.</p>
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-A8A76037-66B7-4DEA-8883-38FB5057A6A3" name="GUID-A8A76037-66B7-4DEA-8883-38FB5057A6A3"></a><h4 id="ARPLS-GUID-A8A76037-66B7-4DEA-8883-38FB5057A6A3" class="sect4"><span class="enumeration_section">178.1.14 </span>SWITCH_DESTINATION Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure makes the candidate destination as the new destination in the RMF topology. This procedure must be executed only on the candidate destination node.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.SWITCH_DESTINATION(
+   topology_name      IN VARCHAR2,
+   force_switch       IN BOOLEAN DEFAULT TRUE);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-A8A76037-66B7-4DEA-8883-38FB5057A6A3__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-13 SWITCH_DESTINATION Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="SWITCH_DESTINATION Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.SWITCH_DESTINATION subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e2322">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e2325">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2330" headers="d1094000e2322 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2330 d1094000e2325 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2338" headers="d1094000e2322 ">
+                                       <p><code class="codeph">force_switch</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2338 d1094000e2325 ">
+                                       <p>If set to <code class="codeph">FALSE</code>, the execution of this procedure fails in the following situations:
+                                       </p>
+                                       <ul style="list-style-type: disc;">
+                                          <li>
+                                             <p>Candidate destination is a read-only database, and hence it cannot become the new destination.</p>
+                                          </li>
+                                          <li>
+                                             <p>Candidate destination does not have database links to one or more sources in the topology.</p>
+                                          </li>
+                                          <li>
+                                             <p>Candidate destination is unable to get the latest AWR data from the old destination.</p>
+                                          </li>
+                                       </ul>
+                                       <p>If set to <code class="codeph">TRUE</code>, the execution of this procedure fails in the following situation:
+                                       </p>
+                                       <ul style="list-style-type: disc;">
+                                          <li>
+                                             <p>Candidate destination is a read-only database, and hence it cannot become the new destination.</p>
+                                          </li>
+                                       </ul>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-D22BA9EB-98D1-4EE5-83CC-ED749D878655" name="GUID-D22BA9EB-98D1-4EE5-83CC-ED749D878655"></a><h4 id="ARPLS-GUID-D22BA9EB-98D1-4EE5-83CC-ED749D878655" class="sect4"><span class="enumeration_section">178.1.15 </span>UNCONFIGURE_NODE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes the configuration details of the node on which this procedure is executed.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.UNCONFIGURE_NODE;
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+               <div class="sect3"><a id="GUID-56558388-7FAC-4BF7-90CD-C99B84DE73DE" name="GUID-56558388-7FAC-4BF7-90CD-C99B84DE73DE"></a><h4 id="ARPLS-GUID-56558388-7FAC-4BF7-90CD-C99B84DE73DE" class="sect4"><span class="enumeration_section">178.1.16 </span>UNREGISTER_NODE Procedure
+                  </h4>
+                  <div>
+                     <p>This procedure removes a node for the RMF topology. This procedure must be executed only on the destination node.</p>
+                     <div class="section">
+                        <p class="subhead3">Syntax</p><pre class="pre codeblock"><code>DBMS_UMF.UNREGISTER_NODE(
+   topology_name    IN VARCHAR2,
+   node_name        IN VARCHAR2);
+</code></pre></div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Parameters</p>
+                        <div class="tblformal" id="GUID-56558388-7FAC-4BF7-90CD-C99B84DE73DE__GUID-CADA479D-EF68-48D7-81BC-7AF4935A2533">
+                           <p class="titleintable">Table 178-14 UNREGISTER_NODE Procedure Parameters</p>
+                           <table cellpadding="4" cellspacing="0" class="Formal" title="UNREGISTER_NODE Procedure Parameters" summary="This table describes the parameters of the DBMS_UMF.UNREGISTER_NODE subprogram." width="100%" frame="hsides" border="1" rules="rows">
+                              <thead>
+                                 <tr align="left" valign="top">
+                                    <th align="left" valign="bottom" id="d1094000e2582">Parameter</th>
+                                    <th align="left" valign="bottom" id="d1094000e2585">Description</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2590" headers="d1094000e2582 ">
+                                       <p><code class="codeph">topology_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2590 d1094000e2585 ">
+                                       <p>Name of the RMF topology.</p>
+                                    </td>
+                                 </tr>
+                                 <tr align="left" valign="top">
+                                    <td align="left" valign="top" id="d1094000e2598" headers="d1094000e2582 ">
+                                       <p><code class="codeph">node_name</code></p>
+                                    </td>
+                                    <td align="left" valign="top" headers="d1094000e2598 d1094000e2585 ">
+                                       <p>Name of the node which needs to be removed from the topology.</p>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- class="inftblhruleinformal" -->
+                     </div>
+                     <!-- class="section" -->
+                     <div class="section">
+                        <p class="subhead3">Security Model</p>
+                        <p>Only the database users <code class="codeph">SYS</code> and <code class="codeph">SYS$UMF</code> can execute this procedure.
+                        </p>
+                     </div>
+                     <!-- class="section" -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </article>
+   </body>
+</html>
